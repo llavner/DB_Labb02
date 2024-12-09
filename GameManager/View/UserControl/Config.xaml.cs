@@ -18,7 +18,7 @@ namespace GameManager.View.UserControl
     /// <summary>
     /// Interaction logic for Config.xaml
     /// </summary>
-    public partial class Config : UserControl
+    public partial class Config
     {
         public Config()
         {

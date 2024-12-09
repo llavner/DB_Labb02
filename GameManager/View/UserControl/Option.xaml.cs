@@ -18,7 +18,7 @@ namespace GameManager.View.UserControl
     /// <summary>
     /// Interaction logic for Option.xaml
     /// </summary>
-    public partial class Option : UserControl
+    public partial class Option
     {
         public Option()
         {
