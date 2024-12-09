@@ -10,6 +10,7 @@ namespace GameManager.ViewModel
     internal class vmManager
     {
 
+        // onödig?
 
         public void EnsureCreated()
         {
