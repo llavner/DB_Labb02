@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace GameManager.View.UserControl
 {
     /// <summary>
-    /// Interaction logic for Config.xaml
+    /// Interaction logic for List.xaml
     /// </summary>
-    public partial class Config
+    public partial class List
     {
-        public Config()
+        public List()
         {
             InitializeComponent();
         }
