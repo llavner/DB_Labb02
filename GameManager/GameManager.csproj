@@ -22,12 +22,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Assets\GM.png">
+    <Resource Include="Assets\Images\GM.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Assets\gmsmall.ico">
+    <Resource Include="Assets\Images\gmsmall.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Assets\Font\" />
   </ItemGroup>
 
 </Project>

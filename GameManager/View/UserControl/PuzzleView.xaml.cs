@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace GameManager.View.UserControl
 {
     /// <summary>
-    /// Interaction logic for Info.xaml
+    /// Interaction logic for PuzzleView.xaml
     /// </summary>
-    public partial class Info
+    public partial class PuzzleView
     {
-        public Info()
+        public PuzzleView()
         {
             InitializeComponent();
         }

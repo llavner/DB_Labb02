@@ -1,55 +1,70 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using GameManager.Assets.Command;
+using GameManager.Assets.Event;
+using GameManager.Model;
+using System.Windows;
+
 
 namespace GameManager.ViewModel
 {
-    internal class vmMainWindow : vmBase
+    internal class vmMainWindow : ObservebleObject
     {
+        private object _currentView;
+        public object CurrentView
+        {
+            get { return _currentView; }
+            set 
+            { 
+                _currentView = value;
+                PropertyChangedAlert();
+            }
+        }
+        
+        public RelayCommand HomeViewCommand { get; set; }
+        public RelayCommand MemberViewCommand { get; set; }
+        public RelayCommand PuzzleViewCommand { get; set; }
+        public RelayCommand BoardgameViewCommand { get; set; }
+
+        public RelayCommand ExitCommand { get; set; }
+
+        public vmHomeView HomeView { get; set; }
+        public vmMembers MemberView { get; set; }
+        public vmPuzzles PuzzleView { get; set; }
+        public vmBoardgames BoardgameView { get; set; } 
 
         public vmMainWindow()
         {
 
-            var manageDb = new vmManager();
-            var boardGame = new vmBoardgames();
-            var puzzle = new vmPuzzles();
-            var member = new vmMembers();
+            HomeView = new vmHomeView();
+            MemberView = new vmMembers();
+            PuzzleView = new vmPuzzles();
+            BoardgameView = new vmBoardgames();
 
-            //boardGame.CreateBoardgame(
-            //    title: "Prepper",
-            //    manufactor: "Ninja Print",
-            //    language: "Swedish",
-            //    players: "2-4",
-            //    duration: "60-90 min",
-            //    difficulty: 3,
-            //    type: "Survival"
-            //    );
+            CurrentView = HomeView;
 
-            //puzzle.CreatePuzzle(
-            //    title: "Santa Claus is here!",
-            //    theme: "Christmas",
-            //    manufactor: "Schmidt",
-            //    bits: 1000,
-            //    difficulty: "Medium"
-            //    );
+            HomeViewCommand = new RelayCommand(o => { CurrentView = HomeView; } );
 
-            //member.AddMember(
-            //    firstName: "Malte",
-            //    lastName: "Reingold",
-            //    email: "malte.reingold@gmail.com",
-            //    street: "Jakobsgatan",
-            //    streetNumber: 4,
-            //    city: "Örebro",
-            //    postalCode: 74321
-            //    );
+            MemberViewCommand = new RelayCommand(o => { CurrentView = MemberView; });
 
-            //manageDb.EnsureDeleted();
-            //manageDb.EnsureCreated();
+            PuzzleViewCommand = new RelayCommand(o => { CurrentView = PuzzleView; });
 
+            BoardgameViewCommand = new RelayCommand(o => { CurrentView = BoardgameView; });
 
+            
         }
 
+        
+
+        public void EnsureCreated()
+        {
+            using var db = new ManagerContext();
+            db.Database.EnsureCreated();
+
+        }
+        public void EnsureDeleted()
+        {
+            using var db = new ManagerContext();
+            db.Database.EnsureDeleted();
+
+        }
     }
 }

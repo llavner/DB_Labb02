@@ -2,8 +2,33 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:GameManager"
+             xmlns:viewModel="clr-namespace:GameManager.ViewModel"
+             xmlns:view="clr-namespace:GameManager.View.UserControl"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Assets/Theme/MenuTheme.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <DataTemplate DataType="{x:Type viewModel:vmHomeView}">
+                <view:HomeView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:vmMembers}">
+                <view:MembersView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:vmPuzzles}">
+                <view:PuzzleView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:vmBoardgames}">
+                <view:BoardgameView/>
+            </DataTemplate>
+
+        </ResourceDictionary>
+        
     </Application.Resources>
 </Application>
