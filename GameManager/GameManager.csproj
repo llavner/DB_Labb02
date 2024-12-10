@@ -22,9 +22,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Assets\Images\GM.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
     <Resource Include="Assets\Images\gmsmall.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>

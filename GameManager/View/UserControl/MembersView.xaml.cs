@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GameManager.Model;
+using Microsoft.Extensions.Options;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,20 @@ namespace GameManager.View.UserControl
         public MembersView()
         {
             InitializeComponent();
+
+            Loaded += MembersView_Loaded;
+        }
+
+        private void MembersView_Loaded(object sender, RoutedEventArgs e)
+        {
+
+            using var db = new ManagerContext();
+
+            var members = db.Members.ToList();
+
+            
+            MemberDataGrid.ItemsSource = members;
+
         }
     }
 }

@@ -4,37 +4,48 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:GameManager.View.UserControl"
+             xmlns:db="clr-namespace:GameManager.Model"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <StackPanel>
 
-            <TextBlock Text="Members"
-               Foreground="White"
-               FontSize="28"
-               HorizontalAlignment="Left"
-               Margin="0,0,0,20"/>
-
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
 
                 <Border Width="600"
-                Height="300"
-                Background="#FFD4EDCE">
+                        Height="400"
+                        Background="#FFD4EDCE">
 
                     <Border.Clip>
                         <RectangleGeometry RadiusX="10"
                                    RadiusY="10"
-                                   Rect="0,0,600,300"/>
+                                   Rect="0,0,600,400"/>
                     </Border.Clip>
 
                     <Grid Margin="20">
-                        <DataGrid x:Name="memberData"/>
+
+                        
+
+                            <DataGrid x:Name="MemberDataGrid" 
+                                  AlternatingRowBackground="Gray"
+                                  AutoGenerateColumns="False" Background="#FFD4EDCE">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Firstname" Binding="{Binding FirstName}"/>
+                                    <DataGridTextColumn Header="Lastname" Binding="{Binding LastName}"/>
+                                    <DataGridTextColumn Header="Email" Binding="{Binding Email}"/>
+
+                                </DataGrid.Columns>
+
+                            </DataGrid>
+
+                        
                     </Grid>
 
                 </Border>
 
             </StackPanel>
 
+            
         </StackPanel>
 
     </Grid>

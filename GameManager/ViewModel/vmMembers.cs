@@ -10,6 +10,16 @@ namespace GameManager.ViewModel
     internal class vmMembers
     {
 
+
+
+        public void ListMembers()
+        {
+            using var db = new ManagerContext();
+
+            db.Members.ToList();
+
+
+        }
         public void AddMember(string firstName, string lastName, string email, string street, int streetNumber, string city, int postalCode)
         {
             var member = new Members() 

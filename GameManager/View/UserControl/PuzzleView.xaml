@@ -10,22 +10,17 @@
 
         <StackPanel>
 
-            <TextBlock Text="Puzzles"
-                       Foreground="White"
-                       FontSize="28"
-                       HorizontalAlignment="Left"
-                       Margin="0,0,0,20"/>
-
+            
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
 
                 <Border Width="600"
-                        Height="300"
+                        Height="400"
                         Background="#FFD4EDCE">
 
                     <Border.Clip>
                         <RectangleGeometry RadiusX="10"
                            RadiusY="10"
-                           Rect="0,0,600,300"/>
+                           Rect="0,0,600,400"/>
                     </Border.Clip>
 
                     <Grid Margin="20">

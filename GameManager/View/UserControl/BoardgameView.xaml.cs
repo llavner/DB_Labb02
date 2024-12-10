@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GameManager.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,17 @@ namespace GameManager.View.UserControl
         public BoardgameView()
         {
             InitializeComponent();
+
+            Loaded += BoardgameView_Loaded;
+        }
+
+        private void BoardgameView_Loaded(object sender, RoutedEventArgs e)
+        {
+            using var db = new ManagerContext();
+
+            var boardgame = db.Boardgames.ToList();
+
+            boardgameDataGrid.ItemsSource = boardgame;
         }
     }
 }

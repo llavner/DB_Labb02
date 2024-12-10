@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Icon="./Assets/images/gmsmall.ico"
         Title="Game Manager" Height="600" Width="900"
-        WindowStyle="None" ResizeMode="NoResize"
+        WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen"
         Background="Transparent" AllowsTransparency="True">
 
     <Window.DataContext>
@@ -69,7 +69,7 @@
                              Command="{Binding HomeViewCommand}"/>
 
                 <RadioButton Content="Members"
-                            Height="50"
+                             Height="50"
                              Foreground="White"
                              FontSize="20"
                              Style="{StaticResource MenuTheme}"
