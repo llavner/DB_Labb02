@@ -29,7 +29,7 @@ namespace GameManager.View.UserControl
             Loaded += MembersView_Loaded;
         }
 
-        private void MembersView_Loaded(object sender, RoutedEventArgs e)
+        private async void MembersView_Loaded(object sender, RoutedEventArgs e)
         {
 
             using var db = new ManagerContext();

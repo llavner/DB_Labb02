@@ -7,7 +7,7 @@
         xmlns:viewModel="clr-namespace:GameManager.ViewModel"
         mc:Ignorable="d"
         Icon="./Assets/images/gmsmall.ico"
-        Title="Game Manager" Height="600" Width="900"
+        Title="Game Manager" Height="600" Width="1000"
         WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen"
         Background="Transparent" AllowsTransparency="True">
 
