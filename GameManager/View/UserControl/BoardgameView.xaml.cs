@@ -14,8 +14,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace GameManager.View.UserControl
-{
+namespace GameManager.View.UserControl;
+
     /// <summary>
     /// Interaction logic for BoardgameView.xaml
     /// </summary>
@@ -25,16 +25,9 @@ namespace GameManager.View.UserControl
         {
             InitializeComponent();
 
-            Loaded += BoardgameView_Loaded;
+           
         }
 
-        private void BoardgameView_Loaded(object sender, RoutedEventArgs e)
-        {
-            using var db = new ManagerContext();
-
-            var boardgame = db.Boardgames.ToList();
-
-            boardgameDataGrid.ItemsSource = boardgame;
-        }
+       
     }
-}
+

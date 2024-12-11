@@ -4,7 +4,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:GameManager.View.UserControl"
+             xmlns:UI="clr-namespace:GameManager.ViewModel"
+             xmlns:db="clr-namespace:GameManager.Model"
              mc:Ignorable="d" 
+             d:DataContext="{d:DesignInstance Type=UI:vmBoardgames, IsDesignTimeCreatable=True}"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
 
@@ -14,21 +17,46 @@
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
 
                 <Border Width="700"
-                Height="400"
-                Background="#FFD4EDCE">
+                        Height="400"
+                        Background="#FFD4EDCE">
 
                     <Border.Clip>
                         <RectangleGeometry RadiusX="10"
-                   RadiusY="10"
-                   Rect="0,0,700,400"/>
+                                           RadiusY="10"
+                                           Rect="0,0,700,400"/>
                     </Border.Clip>
 
                     <Grid Margin="20">
-                        <DataGrid x:Name="boardgameDataGrid"
-                                  AlternatingRowBackground="Gray"
-                                  AutoGenerateColumns="True" 
-                                  Background="#FFD4EDCE"
-                                  />
+                        <DataGrid x:Name="MemberDataGrid" 
+                                  AlternatingRowBackground="AliceBlue"
+                                  AutoGenerateColumns="False" Background="#FFD4EDCE"
+                                  ItemsSource="{Binding Boardgames}"
+                                  SelectedItem="{Binding SelectedBoardgame}">  
+
+                            <DataGrid.Columns>
+
+                                <DataGridTextColumn Header="Title"
+                                                    Binding="{Binding Title}"/>
+
+                                <DataGridTextColumn Header="Players"
+                                                    Binding="{Binding Players}"/>
+
+                                <DataGridTextColumn Header="Type"
+                                                    Binding="{Binding Type}"/>
+
+                                <DataGridTextColumn Header="Duration(min)"
+                                                    Binding="{Binding Duration}"/>
+
+                                <DataGridTextColumn Header="Difficulty"
+                                                    Binding="{Binding Difficulty}"/>
+
+                                <DataGridTextColumn Header="Manufactor"
+                                                    Binding="{Binding Manufactor}"/>
+
+                            </DataGrid.Columns>
+
+
+                        </DataGrid>
                     </Grid>
 
                 </Border>

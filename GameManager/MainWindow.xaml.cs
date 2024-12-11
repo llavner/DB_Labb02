@@ -13,13 +13,11 @@ namespace GameManager
         {
             InitializeComponent();
 
-            var boardGame = new vmBoardgames();
-            var puzzle = new vmPuzzles();
-            var member = new vmMembers();
-
-            //DataContext = new vmMainWindow();
-
         }
+            
+            
+
+
 
         private void MoveWindow(object sender, MouseButtonEventArgs e)
         {

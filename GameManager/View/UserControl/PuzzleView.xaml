@@ -4,7 +4,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:GameManager.View.UserControl"
+             xmlns:UI="clr-namespace:GameManager.ViewModel"
+             xmlns:db="clr-namespace:GameManager.Model"
              mc:Ignorable="d" 
+             d:DataContext="{d:DesignInstance Type=UI:vmPuzzles, IsDesignTimeCreatable=True}"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
 
@@ -24,7 +27,33 @@
                     </Border.Clip>
 
                     <Grid Margin="20">
-                        <DataGrid x:Name="memberData"/>
+                        <DataGrid x:Name="MemberDataGrid" 
+                                  AlternatingRowBackground="AliceBlue"
+                                  AutoGenerateColumns="False" Background="#FFD4EDCE"
+                                  ItemsSource="{Binding Puzzles}"
+                                  SelectedItem="{Binding SelectedPuzzle}">    
+
+                            <DataGrid.Columns>
+
+                                <DataGridTextColumn Header="Title"
+                                                    Binding="{Binding Title}"/>
+
+                                <DataGridTextColumn Header="Theme"
+                                                    Binding="{Binding Theme}"/>
+
+                                <DataGridTextColumn Header="Bits"
+                                                    Binding="{Binding Bits}"/>
+
+                                <DataGridTextColumn Header="Difficulty"
+                                                    Binding="{Binding Difficulty}"/>
+
+                                <DataGridTextColumn Header="Manufactor"
+                                                    Binding="{Binding Manufactor}"/>
+
+                            </DataGrid.Columns>
+
+
+                        </DataGrid>
                     </Grid>
 
                 </Border>

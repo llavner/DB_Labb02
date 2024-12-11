@@ -1,25 +1,48 @@
-﻿using GameManager.Model;
+﻿using GameManager.Assets.Event;
+using GameManager.Model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace GameManager.ViewModel
 {
-    internal class vmMembers
+    internal class vmMembers : ObservebleObject
     {
 
+        public ObservableCollection<Members> Members { get; private set; }
+
+        private Members? _selectedMember;
+
+        public Members? SelectedMember
+        {
+            get =>_selectedMember;
+            
+            set 
+            { 
+                _selectedMember = value;
+                PropertyChangedAlert();
+            }
+        }
 
 
-        public void ListMembers()
+        public vmMembers()
+        {
+            LoadMembers();
+
+        }
+
+        public void LoadMembers()
         {
             using var db = new ManagerContext();
 
-            db.Members.ToList();
+            Members = new ObservableCollection<Members>(db.Members.ToList());
 
-
+            SelectedMember = Members.FirstOrDefault();
         }
+
         public void AddMember(string firstName, string lastName, string email, string street, int streetNumber, string city, int postalCode)
         {
             var member = new Members() 

@@ -10,7 +10,7 @@ internal class Boardgames
     public string Players { get; set; }
     public string Type { get; set; }
     public string Duration { get; set; }
-    public int Difficulty { get; set; }
+    public string Difficulty { get; set; }
     public string Language { get; set; }
     
     
