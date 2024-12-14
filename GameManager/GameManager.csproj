@@ -9,6 +9,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Assets\Font\**" />
+    <EmbeddedResource Remove="Assets\Font\**" />
+    <None Remove="Assets\Font\**" />
+    <Page Remove="Assets\Font\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Assets\GM.png" />
     <None Remove="Assets\gmsmall.ico" />
   </ItemGroup>
@@ -25,10 +32,6 @@
     <Resource Include="Assets\Images\gmsmall.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Assets\Font\" />
   </ItemGroup>
 
 </Project>

@@ -7,54 +7,107 @@
              xmlns:UI="clr-namespace:GameManager.ViewModel"
              xmlns:db="clr-namespace:GameManager.Model"
              mc:Ignorable="d" 
-             d:DataContext="{d:DesignInstance Type=UI:vmPuzzles, IsDesignTimeCreatable=True}"
+             d:DataContext="{d:DesignInstance Type=UI:PuzzlesViewModel, IsDesignTimeCreatable=True}"
              d:DesignHeight="450" d:DesignWidth="800">
+
     <Grid>
 
         <StackPanel>
 
-            
+
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
 
-                <Border Width="700"
-                        Height="400"
-                        Background="#FFD4EDCE">
+                <Border Width="600"
+                    Height="400"
+                    Background="#FFD4EDCE">
 
                     <Border.Clip>
                         <RectangleGeometry RadiusX="10"
-                           RadiusY="10"
-                           Rect="0,0,700,400"/>
+                       RadiusY="10"
+                       Rect="0,0,600,400"/>
                     </Border.Clip>
 
+
+
+
                     <Grid Margin="20">
-                        <DataGrid x:Name="MemberDataGrid" 
+
+                        <StackPanel Orientation="Horizontal">
+
+                            <DataGrid x:Name="MemberDataGrid"
+                                  Width="500"
+                                  HorizontalAlignment="Left"
                                   AlternatingRowBackground="AliceBlue"
-                                  AutoGenerateColumns="False" Background="#FFD4EDCE"
+                                  AutoGenerateColumns="False"
+                                  BorderBrush="#FF5D5D5D"
+                                  BorderThickness="3"
+                                  ColumnWidth="*"
+                                  SelectionMode="Single"
+                                  IsReadOnly="True"
+                                  CanUserAddRows="False"
+                                  CanUserDeleteRows="False"
+                                  CanUserResizeRows="False"
+                                  CanUserResizeColumns="False"
+                                  CanUserReorderColumns="False"
                                   ItemsSource="{Binding Puzzles}"
-                                  SelectedItem="{Binding SelectedPuzzle}">    
+                                  SelectedItem="{Binding SelectedPuzzle}">
 
-                            <DataGrid.Columns>
+                                <DataGrid.Columns>
 
-                                <DataGridTextColumn Header="Title"
+                                    <DataGridTextColumn Header="Title"
                                                     Binding="{Binding Title}"/>
 
-                                <DataGridTextColumn Header="Theme"
+                                    <DataGridTextColumn Header="Theme"
                                                     Binding="{Binding Theme}"/>
 
-                                <DataGridTextColumn Header="Bits"
+                                    <DataGridTextColumn Header="Bits"
                                                     Binding="{Binding Bits}"/>
 
-                                <DataGridTextColumn Header="Difficulty"
+                                    <DataGridTextColumn Header="Difficulty"
                                                     Binding="{Binding Difficulty}"/>
 
-                                <DataGridTextColumn Header="Manufactor"
+                                    <DataGridTextColumn Header="Manufactor"
                                                     Binding="{Binding Manufactor}"/>
 
-                            </DataGrid.Columns>
+                                </DataGrid.Columns>
 
 
-                        </DataGrid>
+
+                            </DataGrid>
+
+                            <StackPanel VerticalAlignment="Bottom">
+
+                                <Button x:Name="Edit"
+                                    Margin="5,5,0,0"
+                                    Padding="10"
+                                    Content="Edit"
+                                    Command="{Binding ShowEditPuzzleCommand}">
+
+                                </Button>
+
+                                <Button x:Name="Add"
+                                    Margin="5,5,0,0"
+                                    Padding="10"
+                                    Content="Add"
+                                    Command="{Binding}">
+
+                                </Button>
+
+                                <Button x:Name="Del"
+                                    Margin="5,5,0,0"
+                                    Padding="10"
+                                    Content="Del"
+                                    Command="{Binding }">
+
+                                </Button>
+
+                            </StackPanel>
+
+                        </StackPanel>
+
                     </Grid>
+
+
 
                 </Border>
 

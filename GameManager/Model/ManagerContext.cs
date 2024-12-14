@@ -30,5 +30,19 @@ internal class ManagerContext : DbContext
         base.OnModelCreating(modelBuilder);
     }
 
+
+    public void EnsureCreated()
+    {
+        using var db = new ManagerContext();
+        db.Database.EnsureCreated();
+
+    }
+    public void EnsureDeleted()
+    {
+        using var db = new ManagerContext();
+        db.Database.EnsureDeleted();
+
+    }
+
 }
 

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace GameManager.ViewModel
 {
-    internal class vmPuzzles : ObservebleObject
+    internal class PuzzlesViewModel : ObservebleObject
     {
 
         public ObservableCollection<Puzzles> Puzzles { get; private set; }
@@ -29,7 +29,7 @@ namespace GameManager.ViewModel
         }
 
 
-        public vmPuzzles()
+        public PuzzlesViewModel()
         {
 
             LoadPuzzles();

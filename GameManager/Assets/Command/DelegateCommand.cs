@@ -7,13 +7,13 @@ using System.Windows.Input;
 
 namespace GameManager.Assets.Command
 {
-    class RelayCommand : ICommand
+    class DelegateCommand : ICommand
     {
         private readonly Action<object> _execute;
         private readonly Func<object?, bool> _canExecute;
 
         public event EventHandler? CanExecuteChanged;
-        public RelayCommand(Action<object> execute, Func<object?, bool> canExecute = null)
+        public DelegateCommand(Action<object> execute, Func<object?, bool> canExecute = null)
         {
             ArgumentNullException.ThrowIfNull(execute);
 

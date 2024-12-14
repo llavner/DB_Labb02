@@ -6,14 +6,15 @@
         xmlns:local="clr-namespace:GameManager"
         xmlns:viewModel="clr-namespace:GameManager.ViewModel"
         mc:Ignorable="d"
-        Icon="./Assets/images/gmsmall.ico"
+        Icon="/Assets/images/gmsmall.ico"
         Title="Game Manager" Height="600" Width="1000"
         WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen"
         Background="Transparent" AllowsTransparency="True">
 
     <Window.DataContext>
-        <viewModel:vmMainWindow/>
+        <viewModel:MainWindowViewModel/>
     </Window.DataContext>
+    
     <Border Background="#272531" CornerRadius="20">
 
         <Grid>
@@ -68,6 +69,13 @@
                              IsChecked="True"
                              Command="{Binding HomeViewCommand}"/>
 
+                <RadioButton Content="User Sheet"
+                             Height="50"
+                             Foreground="White"
+                             FontSize="20"
+                             Style="{StaticResource MenuTheme}"
+                             Command="{Binding UserSheetViewCommand}"/>
+
                 <RadioButton Content="Members"
                              Height="50"
                              Foreground="White"
@@ -75,6 +83,7 @@
                              Style="{StaticResource MenuTheme}"
                              Command="{Binding MemberViewCommand}"/>
 
+                 
                 <RadioButton Content="Puzzles"
                              Height="50"
                              Foreground="White"
@@ -89,12 +98,19 @@
                              Style="{StaticResource MenuTheme}"
                              Command="{Binding BoardgameViewCommand}"/>
 
+
+            </StackPanel>
+
+            <StackPanel Grid.Row="3"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Left">
+
                 <RadioButton Content="Exit"
                              Height="50"
                              Foreground="White"
                              FontSize="20"
                              Style="{StaticResource MenuTheme}"
-                             Click="RadioButton_Exit"/>
+                             Click="RadioButton_Exit"/> 
 
             </StackPanel>
 

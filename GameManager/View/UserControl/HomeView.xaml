@@ -12,14 +12,14 @@
        
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
 
-            <Border Width="700"
+            <Border Width="600"
                     Height="400"
                     Background="#FFD4EDCE">
 
                 <Border.Clip>
                     <RectangleGeometry RadiusX="10"
                                        RadiusY="10"
-                                       Rect="0,0,700,400"/>
+                                       Rect="0,0,600,400"/>
                 </Border.Clip>
 
                 <Grid>

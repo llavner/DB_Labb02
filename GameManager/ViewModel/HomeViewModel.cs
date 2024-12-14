@@ -1,6 +1,6 @@
 ﻿namespace GameManager.ViewModel
 {
-    public class vmHomeView
+    public class HomeViewModel
     {
 
     }

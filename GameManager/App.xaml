@@ -4,7 +4,7 @@
              xmlns:local="clr-namespace:GameManager"
              xmlns:viewModel="clr-namespace:GameManager.ViewModel"
              xmlns:view="clr-namespace:GameManager.View.UserControl"
-             StartupUri="MainWindow.xaml">
+             StartupUri="View\MainWindow.xaml">
     <Application.Resources>
 
         <ResourceDictionary>
@@ -12,19 +12,19 @@
                 <ResourceDictionary Source="Assets/Theme/MenuTheme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
-            <DataTemplate DataType="{x:Type viewModel:vmHomeView}">
+            <DataTemplate DataType="{x:Type viewModel:HomeViewModel}">
                 <view:HomeView/>
             </DataTemplate>
 
-            <DataTemplate DataType="{x:Type viewModel:vmMembers}">
+            <DataTemplate DataType="{x:Type viewModel:MembersViewModel}">
                 <view:MembersView/>
             </DataTemplate>
 
-            <DataTemplate DataType="{x:Type viewModel:vmPuzzles}">
+            <DataTemplate DataType="{x:Type viewModel:PuzzlesViewModel}">
                 <view:PuzzleView/>
             </DataTemplate>
 
-            <DataTemplate DataType="{x:Type viewModel:vmBoardgames}">
+            <DataTemplate DataType="{x:Type viewModel:BoardgamesViewModel}">
                 <view:BoardgameView/>
             </DataTemplate>
 

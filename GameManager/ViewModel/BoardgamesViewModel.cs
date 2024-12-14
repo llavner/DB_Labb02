@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace GameManager.ViewModel
 {
-    internal class vmBoardgames : ObservebleObject
+    internal class BoardgamesViewModel : ObservebleObject
     {
 
         public ObservableCollection<Boardgames> Boardgames { get; private set; }
@@ -28,7 +28,7 @@ namespace GameManager.ViewModel
         }
 
 
-        public vmBoardgames()
+        public BoardgamesViewModel()
         {
 
             LoadBoardgames();
@@ -46,7 +46,7 @@ namespace GameManager.ViewModel
 
         public void CreateBoardgame(string title, string manufactor, string language, string players, string duration, string difficulty, string type)
         {
-            var boardGame = new Boardgames() { Title = title, Manufactor = manufactor, Language = language, Players = players, Duration = duration, Difficulty = difficulty, Type = type };
+            var boardGame = new Boardgames() { Title = title, Manufactor = manufactor, Players = players, Duration = duration, Difficulty = difficulty};
 
             using var db = new ManagerContext();
 

@@ -1,5 +1,7 @@
-﻿using GameManager.Assets.Event;
+﻿using GameManager.Assets.Command;
+using GameManager.Assets.Event;
 using GameManager.Model;
+using GameManager.View;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -9,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace GameManager.ViewModel
 {
-    internal class vmMembers : ObservebleObject
+    internal class MembersViewModel : ObservebleObject
     {
 
         public ObservableCollection<Members> Members { get; private set; }
@@ -24,14 +26,27 @@ namespace GameManager.ViewModel
             { 
                 _selectedMember = value;
                 PropertyChangedAlert();
+                
             }
         }
 
+        public DelegateCommand ShowEditMemberCommand { get; set; }
 
-        public vmMembers()
+
+        public MembersViewModel()
         {
             LoadMembers();
 
+            ShowEditMemberCommand = new DelegateCommand(EditMember, CanEditMember);
+
+        }
+
+        private bool CanEditMember(object? arg) => SelectedMember is not null;
+        
+
+        private void EditMember(object obj)
+        {
+            new MemberEdit().Show();
         }
 
         public void LoadMembers()
