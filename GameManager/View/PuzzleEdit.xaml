@@ -55,7 +55,8 @@
                     <Grid Margin="20">
 
                         <StackPanel Orientation="Vertical"
-                            HorizontalAlignment="Center">
+                                    HorizontalAlignment="Center"
+                                    Margin="20">
 
 
 

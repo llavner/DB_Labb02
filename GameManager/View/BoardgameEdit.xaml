@@ -54,7 +54,8 @@
                     <Grid Margin="20">
 
                         <StackPanel Orientation="Vertical"
-                        HorizontalAlignment="Center">
+                                    HorizontalAlignment="Center"
+                                    Margin="20">
 
 
 
@@ -80,9 +81,9 @@
 
 
                             <StackPanel Orientation="Horizontal"
-                                    VerticalAlignment="Bottom"
-                                    HorizontalAlignment="Center"
-                                    Margin="10">
+                                        VerticalAlignment="Bottom"
+                                        HorizontalAlignment="Center"
+                                        Margin="10">
 
                                 <Button x:Name="Save"
                                     Padding="10"
