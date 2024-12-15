@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GameManager.View"
         xmlns:UI="clr-namespace:GameManager.ViewModel"
-        WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen"
+        WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterOwner"
         Background="Transparent" AllowsTransparency="True">
 
     
@@ -40,7 +40,7 @@
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
 
 
-                <Border Width="200"
+                <Border Width="400"
                 Height="400"
                 BorderThickness="3"
                 BorderBrush="DarkGoldenrod"
@@ -49,7 +49,7 @@
                     <Border.Clip>
                         <RectangleGeometry RadiusX="10"
                        RadiusY="10"
-                       Rect="0,0,700,500"/>
+                       Rect="0,0,400,400"/>
                     </Border.Clip>
 
                     <Grid Margin="20">

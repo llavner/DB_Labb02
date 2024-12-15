@@ -1,5 +1,7 @@
-﻿using GameManager.Assets.Event;
+﻿using GameManager.Assets.Command;
+using GameManager.Assets.Event;
 using GameManager.Model;
+using GameManager.View;
 using Microsoft.Windows.Themes;
 using System;
 using System.Collections.Generic;
@@ -28,14 +30,21 @@ namespace GameManager.ViewModel
             }
         }
 
-
+        public DelegateCommand ShowEditPuzzleCommand { get; set; }
         public PuzzlesViewModel()
         {
 
             LoadPuzzles();
 
+            ShowEditPuzzleCommand = new DelegateCommand(EditPuzzle, CanEditPuzzle);
+
         }
 
+        private bool CanEditPuzzle(object? arg) => SelectedPuzzle is not null;
+        private void EditPuzzle(object obj)
+        {
+            new PuzzleEdit().Show();
+        }
         public void LoadPuzzles()
         {
             using var db = new ManagerContext();

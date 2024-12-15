@@ -1,6 +1,7 @@
 ﻿using GameManager.Assets.Command;
 using GameManager.Assets.Event;
 using GameManager.Model;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.Collections.ObjectModel;
 using System.Windows;
 
@@ -36,6 +37,7 @@ namespace GameManager.ViewModel
 
         public MainWindowViewModel()
         {
+
             var boardGame = new BoardgamesViewModel();
             var puzzle = new PuzzlesViewModel();
             var member = new MembersViewModel();
@@ -59,8 +61,8 @@ namespace GameManager.ViewModel
 
             UserSheetViewCommand = new DelegateCommand(o => { CurrentView = UserSheetView; });
 
-            
 
+            
 
         }
 

@@ -17,7 +17,7 @@ namespace GameManager
 
             InitializeComponent();
 
-            
+           
         }
 
 
