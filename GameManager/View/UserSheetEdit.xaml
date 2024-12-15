@@ -8,7 +8,9 @@
         WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterOwner"
         Background="Transparent" AllowsTransparency="True">
 
-    
+    <Window.DataContext>
+        <UI:UserSheetViewModel/>
+    </Window.DataContext>
     <Grid>
 
 

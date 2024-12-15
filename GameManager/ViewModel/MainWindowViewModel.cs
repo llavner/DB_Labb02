@@ -52,7 +52,7 @@ namespace GameManager.ViewModel
             PuzzleView = new PuzzlesViewModel();
             BoardgameView = new BoardgamesViewModel();
 
-            CurrentView = UserSheetView;
+            CurrentView = HomeView;
 
             HomeViewCommand = new DelegateCommand(o => { CurrentView = HomeView; });
 

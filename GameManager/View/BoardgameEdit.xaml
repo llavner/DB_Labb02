@@ -8,6 +8,9 @@
         WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterOwner"
         Background="Transparent" AllowsTransparency="True">
 
+    <Window.DataContext>
+        <UI:BoardgamesViewModel/>
+    </Window.DataContext>
 
     <Grid>
 
