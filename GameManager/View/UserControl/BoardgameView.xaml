@@ -9,6 +9,8 @@
              mc:Ignorable="d" 
              d:DataContext="{d:DesignInstance Type=UI:BoardgamesViewModel, IsDesignTimeCreatable=True}"
              d:DesignHeight="450" d:DesignWidth="800">
+    
+    
     <Grid>
 
         <StackPanel>
@@ -22,8 +24,8 @@
 
                     <Border.Clip>
                         <RectangleGeometry RadiusX="10"
-                                       RadiusY="10"
-                                       Rect="0,0,600,400"/>
+                                           RadiusY="10"
+                                           Rect="0,0,600,400"/>
                     </Border.Clip>
 
                     <Grid Margin="20">
@@ -31,22 +33,22 @@
                         <StackPanel Orientation="Horizontal">
 
                             <DataGrid x:Name="BoardgameDataGrid"
-                                  Width="500"
-                                  HorizontalAlignment="Left"
-                                  AlternatingRowBackground="AliceBlue"
-                                  AutoGenerateColumns="False"
-                                  BorderBrush="#FF5D5D5D"
-                                  BorderThickness="3"
-                                  ColumnWidth="*"
-                                  SelectionMode="Single"
-                                  IsReadOnly="True"
-                                  CanUserAddRows="False"
-                                  CanUserDeleteRows="False"
-                                  CanUserResizeRows="False"
-                                  CanUserResizeColumns="False"
-                                  CanUserReorderColumns="False"
-                                  ItemsSource="{Binding Boardgames}"
-                                  SelectedItem="{Binding SelectedBoardgame}">
+                                      Width="500"
+                                      HorizontalAlignment="Left"
+                                      AlternatingRowBackground="AliceBlue"
+                                      AutoGenerateColumns="False"
+                                      BorderBrush="#FF5D5D5D"
+                                      BorderThickness="3"
+                                      ColumnWidth="*"
+                                      SelectionMode="Single"
+                                      IsReadOnly="True"
+                                      CanUserAddRows="False"
+                                      CanUserDeleteRows="False"
+                                      CanUserResizeRows="False"
+                                      CanUserResizeColumns="False"
+                                      CanUserReorderColumns="False"
+                                      ItemsSource="{Binding Boardgames}"
+                                      SelectedItem="{Binding SelectedBoardgame}">
 
                                 <DataGrid.Columns>
 

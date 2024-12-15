@@ -36,6 +36,8 @@ namespace GameManager.ViewModel
             LoadBoardgames();
 
             ShowEditBoardgameCommand = new DelegateCommand(EditBoardgame, CanEditBoardgame);
+
+
         }
 
         private bool CanEditBoardgame(object? arg) => SelectedBoardgame is not null;

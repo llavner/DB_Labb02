@@ -16,8 +16,8 @@
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
 
                 <Border Width="600"
-            Height="400"
-            Background="#FFD4EDCE">
+                        Height="400"
+                        Background="#FFD4EDCE"> 
 
                     <Border.Clip>
                         <RectangleGeometry RadiusX="10"
@@ -30,32 +30,32 @@
                         <StackPanel Orientation="Horizontal">
 
                             <DataGrid x:Name="UserSheetDataGrid"
-                          Width="500"
-                          HorizontalAlignment="Left"
-                          AlternatingRowBackground="AliceBlue"
-                          AutoGenerateColumns="False"
-                          BorderBrush="#FF5D5D5D"
-                          BorderThickness="3"
-                          ColumnWidth="*"
-                          SelectionMode="Single"
-                          IsReadOnly="True"
-                          CanUserAddRows="False"
-                          CanUserDeleteRows="False"
-                          CanUserResizeRows="False"
-                          CanUserResizeColumns="False"
-                          CanUserReorderColumns="False"
-                          ItemsSource="{Binding UserSheet}">
+                                      Width="500"
+                                      HorizontalAlignment="Left"
+                                      AlternatingRowBackground="AliceBlue"
+                                      AutoGenerateColumns="False"
+                                      BorderBrush="#FF5D5D5D"
+                                      BorderThickness="3"
+                                      ColumnWidth="*"
+                                      SelectionMode="Single"
+                                      IsReadOnly="True"
+                                      CanUserAddRows="False"
+                                      CanUserDeleteRows="False"
+                                      CanUserResizeRows="False"
+                                      CanUserResizeColumns="False"
+                                      CanUserReorderColumns="False"
+                                      ItemsSource="{Binding UserSheet}">
 
                                 <DataGrid.Columns>
 
                                     <DataGridTextColumn Header="Member"
-                                            Binding="{Binding Members}"/>
+                                                        Binding="{Binding Members}"/>
 
                                     <DataGridTextColumn Header="Puzzle"
-                                            Binding="{Binding Puzzles}"/>
+                                                        Binding="{Binding Puzzles}"/>
 
                                     <DataGridTextColumn Header="Boardgame"
-                                            Binding="{Binding Boardgames}"/>
+                                                        Binding="{Binding Boardgames}"/>
 
 
                                 </DataGrid.Columns>
@@ -66,11 +66,11 @@
 
                             <StackPanel VerticalAlignment="Bottom">
 
-                                <Button x:Name="Test"
+                                <Button x:Name="Edit"
                                         Margin="5,5,0,0"
                                         Padding="10"
-                                        Content="Test"
-                                        Command="{Binding }">   
+                                        Content="Edit"
+                                        Command="{Binding ShowEditUserSheetCommand}">   
 
                                 </Button>
 

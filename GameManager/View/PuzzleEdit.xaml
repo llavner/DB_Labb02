@@ -89,14 +89,15 @@
 
 
                                 <Button x:Name="Save"
-                                Padding="10"
-                                Margin="0,0,20,0"
-                                Content="Save"
-                                Command="{Binding}"/>
+                                        Padding="10"
+                                        Margin="0,0,20,0"
+                                        Content="Save"
+                                        Command="{Binding}"/>
+                                
                                 <Button x:Name="Exit"
-                                Padding="10"
-                                Content="Back"
-                                Click="Button_Exit"/>
+                                        Padding="10"
+                                        Content="Back"
+                                        Click="Button_Exit"/>
                             </StackPanel>
 
                         </StackPanel>

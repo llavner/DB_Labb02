@@ -27,7 +27,7 @@ namespace GameManager.ViewModel
         public DelegateCommand PuzzleViewCommand { get; set; }
         public DelegateCommand UserSheetViewCommand { get; set; }
         public DelegateCommand BoardgameViewCommand { get; set; }
-        
+
 
         public HomeViewModel HomeView { get; set; }
         public MembersViewModel MemberView { get; set; }
@@ -37,11 +37,14 @@ namespace GameManager.ViewModel
 
         public MainWindowViewModel()
         {
+            //EnsureDeleted();
+            //EnsureCreated();
 
-            var boardGame = new BoardgamesViewModel();
-            var puzzle = new PuzzlesViewModel();
-            var member = new MembersViewModel();
-            var userSheet = new UserSheetViewModel();
+
+            //var member = new MembersViewModel();
+            //var userSheet = new UserSheetViewModel();
+            //var boardGame = new BoardgamesViewModel();
+            //var puzzle = new PuzzlesViewModel();
 
             HomeView = new HomeViewModel();
             MemberView = new MembersViewModel();
@@ -49,7 +52,7 @@ namespace GameManager.ViewModel
             PuzzleView = new PuzzlesViewModel();
             BoardgameView = new BoardgamesViewModel();
 
-            CurrentView = HomeView;
+            CurrentView = UserSheetView;
 
             HomeViewCommand = new DelegateCommand(o => { CurrentView = HomeView; });
 
@@ -62,7 +65,20 @@ namespace GameManager.ViewModel
             UserSheetViewCommand = new DelegateCommand(o => { CurrentView = UserSheetView; });
 
 
-            
+
+
+        }
+
+        public static void EnsureCreated()
+        {
+            using var db = new ManagerContext();
+            db.Database.EnsureCreated();
+
+        }
+        public static void EnsureDeleted()
+        {
+            using var db = new ManagerContext();
+            db.Database.EnsureDeleted();
 
         }
 

@@ -15,16 +15,16 @@ using System.Windows.Shapes;
 namespace GameManager.View
 {
     /// <summary>
-    /// Interaction logic for BoardgameEdit.xaml
+    /// Interaction logic for UserSheetEdit.xaml
     /// </summary>
-    public partial class BoardgameEdit : Window
+    public partial class UserSheetEdit : Window
     {
-        public BoardgameEdit()
+        public UserSheetEdit()
         {
             InitializeComponent();
-
-
+     
         }
+
 
         private void MoveWindow(object sender, MouseButtonEventArgs e)
         {

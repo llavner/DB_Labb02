@@ -1,4 +1,4 @@
-﻿<Window x:Class="GameManager.View.BoardgameEdit"
+﻿<Window x:Class="GameManager.View.UserSheetEdit"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -8,7 +8,7 @@
         WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterOwner"
         Background="Transparent" AllowsTransparency="True">
 
-
+    
     <Grid>
 
 
@@ -23,12 +23,11 @@
                     BorderBrush="DarkGoldenrod"
                     BorderThickness="1">
 
-                <TextBlock Text="Edit Boardgame"
+                <TextBlock Text="Edit User Sheet"
                        VerticalAlignment="Center" 
                        HorizontalAlignment="Center" 
                        Foreground="Gold"
-                       Margin="0,0,0,0"
-                       />
+                       Margin="0,0,0,0"/>
 
             </Border>
 
@@ -55,25 +54,9 @@
 
 
 
-                            <Label Content="Title: "/>
-                            <TextBox x:Name="title"
-                                 Text="{Binding SelectedBoardgame.Title}"/>
-
-                            <Label Content="Manufactor: "/>
-                            <TextBox x:Name="manufactor"
-                                 Text="{Binding SelectedBoardgame.Manufactor}"/>
-
-                            <Label Content="Players: "/>
-                            <TextBox x:Name="players"
-                                 Text="{Binding SelectedBoardgame.Players}"/>
-
-                            <Label Content="Difficulty"/>
-                            <TextBox x:Name="difficulty"
-                                 Text="{Binding SelectedBoardgame.Difficulty}"/>
-
-                            <Label Content="Duration:"/>
-                            <TextBox x:Name="duration"
-                                 Text="{Binding SelectedBoardgame.Duration}"/>
+                            <Label Content="Id: "/>
+                            <TextBox x:Name="Id"
+                                     Text="{Binding SelectedUserSheet.Id}"/>
 
 
                             <StackPanel Orientation="Horizontal"
@@ -82,10 +65,9 @@
                                         Margin="10">
 
                                 <Button x:Name="Save"
-                                        Padding="10"
-                                        Margin="0,0,20,0"
-                                        Content="Save"
-                                        Command="{Binding}"/>
+                                    Padding="10"
+                                    Margin="0,0,20,0"
+                                    Content="Save"/>
 
                                 <Button x:Name="Exit"
                                         Padding="10"
@@ -107,3 +89,4 @@
 
     </Grid>
 </Window>
+
