@@ -1,4 +1,7 @@
-﻿using System;
+﻿using GameManager.Assets.Command;
+using GameManager.Model;
+using GameManager.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,15 +18,23 @@ using System.Windows.Shapes;
 namespace GameManager.View
 {
     /// <summary>
-    /// Interaction logic for PuzzleEdit.xaml
+    /// Interaction logic for MemberEdit.xaml
     /// </summary>
-    public partial class PuzzleEdit : Window
+    public partial class MemberEdit : Window
     {
-        public PuzzleEdit()
+       
+
+        public MemberEdit(MembersViewModel membersViewModel)
         {
+
+
             InitializeComponent();
+
+            DataContext = membersViewModel;
+
         }
 
+        
         private void MoveWindow(object sender, MouseButtonEventArgs e)
         {
             if (e.ButtonState == MouseButtonState.Pressed)

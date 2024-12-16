@@ -1,4 +1,5 @@
 ﻿using GameManager.Model;
+using GameManager.ViewModel;
 using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
@@ -17,29 +18,17 @@ using System.Windows.Shapes;
 
 namespace GameManager.View.UserControl;
 
-    /// <summary>
-    /// Interaction logic for MembersView.xaml
-    /// </summary>
-    public partial class MembersView
+/// <summary>
+/// Interaction logic for MembersView.xaml
+/// </summary>
+public partial class MembersView
+{
+    public MembersView()
     {
-        public MembersView()
-        {
-            InitializeComponent();
+        InitializeComponent();
 
-        //Loaded += MembersView_Loaded;
+        
+
     }
-
-    /*
-    private async void MembersView_Loaded(object sender, RoutedEventArgs e)
-    {
-
-        using var db = new ManagerContext();
-
-        var members = db.Members.ToList();
-
-
-        MemberDataGrid.ItemsSource = members;
-
-    }*/
 }
 

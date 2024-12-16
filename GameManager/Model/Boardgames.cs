@@ -2,7 +2,7 @@
 
 namespace GameManager.Model;
 
-internal class Boardgames
+public class Boardgames
 {
     public int Id { get; set; }
     public string Title { get; set; }

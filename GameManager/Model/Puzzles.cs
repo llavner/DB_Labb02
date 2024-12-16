@@ -2,7 +2,7 @@
 
 namespace GameManager.Model;
 
-internal class Puzzles
+public class Puzzles
 {
     public int Id { get; set; }
     public string Title { get; set; }

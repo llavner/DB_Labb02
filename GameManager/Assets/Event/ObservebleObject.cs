@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 
 namespace GameManager.Assets.Event
 {
-    class ObservebleObject : INotifyPropertyChanged
+    public class ObservebleObject : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;
 

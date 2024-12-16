@@ -2,6 +2,7 @@
 using GameManager.Assets.Event;
 using GameManager.Model;
 using GameManager.View;
+using GameManager.View.BoardgameWindows;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -11,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace GameManager.ViewModel
 {
-    internal class BoardgamesViewModel : ObservebleObject
+    public class BoardgamesViewModel : ObservebleObject
     {
 
         public ObservableCollection<Boardgames> Boardgames { get; private set; }
@@ -44,7 +45,7 @@ namespace GameManager.ViewModel
         
         private void EditBoardgame(object obj)
         {
-            new BoardgameEdit().Show();
+            new BoardgameEdit(this).ShowDialog();
         }
 
         public void LoadBoardgames()

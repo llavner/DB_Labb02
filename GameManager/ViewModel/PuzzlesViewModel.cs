@@ -2,6 +2,7 @@
 using GameManager.Assets.Event;
 using GameManager.Model;
 using GameManager.View;
+using GameManager.View.PuzzleWindows;
 using Microsoft.Windows.Themes;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace GameManager.ViewModel
 {
-    internal class PuzzlesViewModel : ObservebleObject
+    public class PuzzlesViewModel : ObservebleObject
     {
 
         public ObservableCollection<Puzzles> Puzzles { get; private set; }
@@ -43,7 +44,7 @@ namespace GameManager.ViewModel
         private bool CanEditPuzzle(object? arg) => SelectedPuzzle is not null;
         private void EditPuzzle(object obj)
         {
-            new PuzzleEdit().Show();
+            new PuzzleEdit(this).ShowDialog();
         }
         public void LoadPuzzles()
         {

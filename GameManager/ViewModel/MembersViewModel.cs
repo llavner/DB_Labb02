@@ -8,10 +8,11 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace GameManager.ViewModel
 {
-    internal class MembersViewModel : ObservebleObject
+    public class MembersViewModel : ObservebleObject
     {
 
         public ObservableCollection<Members> Members { get; private set; }
@@ -20,7 +21,7 @@ namespace GameManager.ViewModel
 
         public Members? SelectedMember
         {
-            get =>_selectedMember;
+            get => _selectedMember;
             
             set 
             { 
@@ -31,23 +32,46 @@ namespace GameManager.ViewModel
         }
 
         public DelegateCommand ShowEditMemberCommand { get; set; }
+        public DelegateCommand ShowAddMemberCommand { get; set; }
+        public DelegateCommand ShowDeleteMemberCommand { get; set; }
 
 
         public MembersViewModel()
         {
+            
+            
             LoadMembers();
-
+            
             ShowEditMemberCommand = new DelegateCommand(EditMember, CanEditMember);
+            ShowAddMemberCommand = new DelegateCommand(NewMember, CanAddMember);
+            ShowDeleteMemberCommand = new DelegateCommand(DeleteMember, CanDeleteMember);
 
+        }
+
+        private bool CanDeleteMember(object? arg) => SelectedMember is not null;
+
+        private void DeleteMember(object obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        private bool CanAddMember(object? arg) => SelectedMember is not null;
+        
+        private void NewMember(object obj)
+        {
+            new AddMember().ShowDialog();
         }
 
         private bool CanEditMember(object? arg) => SelectedMember is not null;
-        
+
 
         private void EditMember(object obj)
         {
-            new MemberEdit().Show();
+
+            new MemberEdit(this).ShowDialog();
         }
+        
+
 
         public void LoadMembers()
         {

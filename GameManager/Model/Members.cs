@@ -2,7 +2,7 @@
 
 namespace GameManager.Model;
 
-internal class Members
+public class Members
 {
 
     public int Id { get; set; }

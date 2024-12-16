@@ -12,18 +12,16 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace GameManager.View
-{
+namespace GameManager.View.BoardgameWindows;
+
     /// <summary>
-    /// Interaction logic for BoardgameEdit.xaml
+    /// Interaction logic for BoardgameAdd.xaml
     /// </summary>
-    public partial class BoardgameEdit : Window
+    public partial class BoardgameAdd : Window
     {
-        public BoardgameEdit()
+        public BoardgameAdd()
         {
             InitializeComponent();
-
-
         }
 
         private void MoveWindow(object sender, MouseButtonEventArgs e)
@@ -41,4 +39,5 @@ namespace GameManager.View
 
         }
     }
-}
+
+

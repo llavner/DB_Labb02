@@ -41,7 +41,7 @@ namespace GameManager.ViewModel
         private bool CanEditUserSheet(object? arg) => SelectedUserSheet is not null;
         private void EditUserSheet(object obj)
         {
-            new UserSheetEdit().Show();
+            new UserSheetEdit().ShowDialog();
         }
 
         public void LoadUserSheet()
