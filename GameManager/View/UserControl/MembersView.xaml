@@ -80,7 +80,7 @@
                                     Margin="5,5,0,0"
                                     Padding="10"
                                     Content="Edit"
-                                    Command="{Binding ShowEditMemberCommand}">
+                                    Command="{Binding WindowEditMemberCommand}">
 
                                 </Button>
 
@@ -88,7 +88,7 @@
                                     Margin="5,5,0,0"
                                     Padding="10"
                                     Content="Add"
-                                    Command="{Binding ShowAddMemberCommand}">
+                                    Command="{Binding WindowAddMemberCommand}">
 
                                 </Button>
 

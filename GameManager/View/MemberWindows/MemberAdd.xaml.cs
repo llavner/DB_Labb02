@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GameManager.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,10 +20,11 @@ namespace GameManager.View
     /// </summary>
     public partial class AddMember : Window
     {
-        public AddMember()
+        public AddMember(MembersViewModel membersViewModel)
         {
             InitializeComponent();
-     
+
+            DataContext = membersViewModel;
         }
 
         private void MoveWindow(object sender, MouseButtonEventArgs e)
@@ -36,6 +38,13 @@ namespace GameManager.View
         private void Button_Exit(object sender, RoutedEventArgs e)
         {
 
+            this.Close();
+
+        }
+
+        private void Save_Click(object sender, RoutedEventArgs e)
+        {
+            
             this.Close();
 
         }

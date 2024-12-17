@@ -32,6 +32,7 @@ namespace GameManager.View
 
             DataContext = membersViewModel;
 
+            
         }
 
         

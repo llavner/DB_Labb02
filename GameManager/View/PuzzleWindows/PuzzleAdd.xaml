@@ -10,9 +10,9 @@
 
 
 
-    <Window.DataContext>
+    <!--<Window.DataContext>
         <UI:PuzzlesViewModel/>
-    </Window.DataContext>
+    </Window.DataContext>-->
 
 
     <Grid>

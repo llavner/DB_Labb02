@@ -6,14 +6,11 @@
         xmlns:local="clr-namespace:GameManager.View"
         xmlns:UI="clr-namespace:GameManager.ViewModel"
         WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen"
+        mc:Ignorable="d"
+        
         Background="Transparent" AllowsTransparency="True">
 
-    
-
-    <!--<Window.DataContext>
-        <UI:MembersViewModel/>
-    </Window.DataContext>-->
-
+    <!--d:DataContext="{d:DesignInstance Type=UI:MembersViewModel, IsDesignTimeCreatable=True}"-->
     <Grid>
 
 
@@ -41,15 +38,15 @@
 
 
                 <Border Width="300"
-                    Height="400"
-                    BorderThickness="3"
+                    Height="450"
+                    BorderThickness="6"
                     BorderBrush="DarkGoldenrod"
                     Background="#FF69945E">
 
                     <Border.Clip>
                         <RectangleGeometry RadiusX="10"
                            RadiusY="10"
-                           Rect="0,0,300,400"/>
+                           Rect="0,0,300,450"/>
                     </Border.Clip>
 
                     <Grid Margin="20">
@@ -62,42 +59,46 @@
 
                             <Label Content="Firstname: "/>
                             <TextBox x:Name="firstName"
-                                    Text="{}"/>
+                                    Text="{Binding FirstName}"/>
 
                             <Label Content="Lastname: "/>
                             <TextBox x:Name="lastName"
-                                 Text=""/>
+                                 Text="{Binding LastName}"/>
+
+                            <Label Content="Email: "/>
+                            <TextBox x:Name="email"
+                                     Text="{Binding Email}"/>
 
                             <Label Content="Street: "/>
                             <TextBox x:Name="street"
-                                 Text=""/>
+                                     Text="{Binding Street}"/>
 
                             <Label Content="Street No."/>
                             <TextBox x:Name="streetNo"
-                                 Text=""/>
+                                     Text="{Binding StreetNumber}"/>
 
                             <Label Content="City:"/>
                             <TextBox x:Name="city"
-                                 Text=""/>
+                                     Text="{Binding City}"/>
 
                             <Label Content="Postal Code:"/>
                             <TextBox x:Name="postalCode"
-                                 Text=""/>
+                                     Text="{Binding PostalCode}"/>
 
                             <StackPanel Orientation="Horizontal"
-                                    VerticalAlignment="Bottom"
-                                    HorizontalAlignment="Center"
-                                    Margin="10">
+                                        VerticalAlignment="Bottom"
+                                        HorizontalAlignment="Center"
+                                        Margin="10">
 
                                 <Button x:Name="Save"
-                                    Padding="10"
-                                    Margin="0,0,20,0"
-                                    Content="Save"
-                                    Command="{Binding}"/>
+                                        Padding="10"
+                                        Margin="0,0,20,0"
+                                        Content="Save"
+                                        Click="Save_Click"/>
                                 <Button x:Name="Exit"
-                                    Padding="10"
-                                    Content="Back"
-                                    Click="Button_Exit"/>
+                                        Padding="10"
+                                        Content="Back"
+                                        Click="Button_Exit"/>
 
                             </StackPanel>
 

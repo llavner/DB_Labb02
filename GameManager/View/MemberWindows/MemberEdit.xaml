@@ -6,10 +6,12 @@
         xmlns:local="clr-namespace:GameManager.View"
         xmlns:UI="clr-namespace:GameManager.ViewModel"
         WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterOwner" 
+        mc:Ignorable="d"
+        
         Background="Transparent" AllowsTransparency="True">
 
-   
-
+    <!--d:DataContext="{d:DesignInstance Type=UI:MembersViewModel, IsDesignTimeCreatable=True}"-->
+    
     <Grid>
 
 
@@ -28,8 +30,7 @@
                        VerticalAlignment="Center" 
                        HorizontalAlignment="Center" 
                        Foreground="Gold"
-                       Margin="0,0,0,0"
-                       />
+                       Margin="0,0,0,0"/>
 
             </Border>
 
@@ -37,15 +38,15 @@
 
 
                 <Border Width="300"
-                    Height="400"
-                    BorderThickness="3"
+                    Height="450"
+                    BorderThickness="6"
                     BorderBrush="DarkGoldenrod"
                     Background="#FF69945E">
 
                     <Border.Clip>
                         <RectangleGeometry RadiusX="10"
                            RadiusY="10"
-                           Rect="0,0,300,400"/>
+                           Rect="0,0,300,450"/>
                     </Border.Clip>
 
                     <Grid Margin="20">
@@ -58,15 +59,19 @@
                             
                             <Label Content="Firstname: "/>
                             <TextBox x:Name="firstName"
-                                 Text="{Binding SelectedMember.FirstName}"/>
+                                    Text="{Binding SelectedMember.FirstName}"/>
 
                             <Label Content="Lastname: "/>
                             <TextBox x:Name="lastName"
-                                 Text="{Binding SelectedMember.LastName}"/>
+                                    Text="{Binding SelectedMember.LastName}"/>
 
+                            <Label Content="Email: "/>
+                            <TextBox x:Name="email"
+                                     Text="{Binding SelectedMember.Email}"/>
+                            
                             <Label Content="Street: "/>
                             <TextBox x:Name="street"
-                                 Text="{Binding SelectedMember.Street}"/>
+                                    Text="{Binding SelectedMember.Street}"/>
 
                             <Label Content="Street No."/>
                             <TextBox x:Name="streetNo"
@@ -74,7 +79,7 @@
 
                             <Label Content="City:"/>
                             <TextBox x:Name="city"
-                                 Text="{Binding SelectedMember.City}"/>
+                                    Text="{Binding SelectedMember.City}"/>
 
                             <Label Content="Postal Code:"/>
                             <TextBox x:Name="postalCode"
