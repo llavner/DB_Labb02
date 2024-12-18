@@ -7,10 +7,11 @@
         xmlns:UI="clr-namespace:GameManager.ViewModel"
         WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen"
         mc:Ignorable="d"
-        
+        d:DataContext="{d:DesignInstance Type=UI:MembersViewModel, IsDesignTimeCreatable=True}"
         Background="Transparent" AllowsTransparency="True">
 
-    <!--d:DataContext="{d:DesignInstance Type=UI:MembersViewModel, IsDesignTimeCreatable=True}"-->
+    
+    
     <Grid>
 
 
@@ -94,11 +95,13 @@
                                         Padding="10"
                                         Margin="0,0,20,0"
                                         Content="Save"
-                                        Click="Save_Click"/>
+                                        Click="Save_Click"
+                                        Command="{Binding AddMemberCommand}"/>
+                                
                                 <Button x:Name="Exit"
                                         Padding="10"
                                         Content="Back"
-                                        Click="Button_Exit"/>
+                                        IsCancel="True"/>
 
                             </StackPanel>
 

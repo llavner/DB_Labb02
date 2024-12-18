@@ -20,13 +20,12 @@ namespace GameManager.ViewModel
         public ObservableCollection<Members> Members { get; private set; }
 
         private Members? _selectedMember;
-
         public Members? SelectedMember
         {
             get => _selectedMember;
-            
-            set 
-            { 
+
+            set
+            {
                 _selectedMember = value;
                 PropertyChangedAlert();
                 
@@ -51,10 +50,10 @@ namespace GameManager.ViewModel
 
         public MembersViewModel()
         {
-            
-            
+
+
             LoadMembers();
-            
+
             WindowEditMemberCommand = new DelegateCommand(EditMemberWindow, CanEditMember);
 
             WindowAddMemberCommand = new DelegateCommand(AddMemberWindow, CanAddMember);
@@ -69,11 +68,27 @@ namespace GameManager.ViewModel
 
         private void DeleteMember(object obj)
         {
-            throw new NotImplementedException();
+            using var db = new ManagerContext();
+
+            if (SelectedMember != null)
+            {
+                db.Members.Remove(SelectedMember);
+                db.SaveChanges();
+                SelectedMember = null;
+                //PropertyChangedAlert("SelectedMember");
+            }
+            else
+            {
+                MessageBox.Show("Attention!", "Please select a row.", MessageBoxButton.OK);
+
+            }
+
+            LoadMembers();
+
         }
 
         private bool CanAddMember(object? arg) => SelectedMember is not null;
-        
+
         private void AddMemberWindow(object obj)
         {
             new AddMember(this).ShowDialog();
@@ -87,7 +102,7 @@ namespace GameManager.ViewModel
 
             new MemberEdit(this).ShowDialog();
         }
-        
+
 
 
         public void LoadMembers()
@@ -95,8 +110,38 @@ namespace GameManager.ViewModel
             using var db = new ManagerContext();
 
             Members = new ObservableCollection<Members>(db.Members.ToList());
+            PropertyChangedAlert("Members");
+            //SelectedMember = Members.FirstOrDefault();
+        }
 
-            SelectedMember = Members.FirstOrDefault();
+        public void EditMember(object obj)
+        {
+
+            var member = SelectedMember;
+            
+            if(member != null)
+            {
+
+                SelectedMember.FirstName = this.FirstName;
+                SelectedMember.LastName = this.LastName;
+                SelectedMember.Email = this.Email;
+                SelectedMember.Street = this.Street;
+                SelectedMember.StreetNumber = this.StreetNumber;
+                SelectedMember.City = this.City;
+                SelectedMember.PostalCode = this.PostalCode;
+
+                using var db = new ManagerContext();
+
+                db.SaveChanges();
+
+                LoadMembers();
+
+            }
+            else
+            {
+                MessageBox.Show("Attention!", "Please select a row.", MessageBoxButton.OK);
+            }
+
         }
 
         public void AddMember(object obj)
@@ -118,7 +163,16 @@ namespace GameManager.ViewModel
 
             db.SaveChanges();
 
-            
+            LoadMembers();
+
+            FirstName = string.Empty;
+            LastName = string.Empty; 
+            Email = string.Empty; 
+            Street = string.Empty;
+            StreetNumber = 0;
+            City = string.Empty;
+            PostalCode = 0;
+
         }
     }
 }

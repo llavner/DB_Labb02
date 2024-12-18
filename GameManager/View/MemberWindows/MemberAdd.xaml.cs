@@ -1,4 +1,5 @@
-﻿using GameManager.ViewModel;
+﻿using GameManager.Assets.Command;
+using GameManager.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,11 +21,17 @@ namespace GameManager.View
     /// </summary>
     public partial class AddMember : Window
     {
+
+        public DelegateCommand SaveMemberCommand { get; set; }
+
+
         public AddMember(MembersViewModel membersViewModel)
         {
             InitializeComponent();
 
             DataContext = membersViewModel;
+
+            
         }
 
         private void MoveWindow(object sender, MouseButtonEventArgs e)
@@ -44,9 +51,7 @@ namespace GameManager.View
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
-            
-            this.Close();
-
+            DialogResult = true;
         }
     }
 }

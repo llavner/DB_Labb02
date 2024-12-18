@@ -32,7 +32,8 @@
 
                             <DataGrid x:Name="MemberDataGrid"
                                   Width="500"
-                                  HorizontalAlignment="Left"
+                                  HorizontalAlignment="Center"
+                                  VerticalAlignment="Top"
                                   AlternatingRowBackground="AliceBlue"
                                   AutoGenerateColumns="False"
                                   BorderBrush="#FF5D5D5D"
@@ -45,8 +46,9 @@
                                   CanUserResizeRows="False"
                                   CanUserResizeColumns="False"
                                   CanUserReorderColumns="False"
+                                  
                                   ItemsSource="{Binding Members}"
-                                  SelectedItem="{Binding SelectedMember}">
+                                  SelectedItem="{Binding SelectedMember, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
 
                                 <DataGrid.Columns>
 
@@ -96,7 +98,7 @@
                                     Margin="5,5,0,0"
                                     Padding="10"
                                     Content="Del"
-                                    Command="{Binding }">
+                                    Command="{Binding DeleteMemberCommand}">
 
                                 </Button>
 

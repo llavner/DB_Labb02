@@ -50,5 +50,10 @@ namespace GameManager.View
             this.Close();
 
         }
+
+        private void Save_Click(object sender, RoutedEventArgs e)
+        {
+            DialogResult = true;
+        }
     }
 }
