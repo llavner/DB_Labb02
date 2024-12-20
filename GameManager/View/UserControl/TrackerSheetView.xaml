@@ -32,7 +32,7 @@
                         <StackPanel Orientation="Horizontal">
 
                             <DataGrid x:Name="TrackerSheetDataGrid"
-                                      AutoGenerateColumns="True"
+                                      AutoGenerateColumns="False"
                                       Width="560"
                                       Height="300"
                                       HorizontalAlignment="Left"
@@ -49,14 +49,14 @@
                                       CanUserResizeRows="False"
                                       CanUserResizeColumns="False"
                                       CanUserReorderColumns="False"
-                                      ItemsSource="{Binding TrackerSheet}"
+                                      ItemsSource="{Binding TrackerSheets}"
                                       SelectedItem="{Binding SelectedTrackerSheet}">
                                       
 
-                                <!--<DataGrid.Columns>
+                                    <DataGrid.Columns>
 
                                     <DataGridTextColumn Header="Puzzle"
-                                                        Binding="{Binding Puzzles}"/>
+                                                        Binding="{Binding Puzzle.Title}"/>
 
                                     <DataGridTextColumn Header="In Use"
                                                         Width="60"
@@ -71,7 +71,7 @@
                                     
 
 
-                                </DataGrid.Columns>-->
+                                </DataGrid.Columns>
 
 
 

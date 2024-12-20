@@ -15,7 +15,6 @@ namespace GameManager.ViewModel
 {
     class TrackerSheetViewModel : ObservebleObject
     {
-
         public ObservableCollection<TrackerSheet> TrackerSheets { get; private set; }
         public ObservableCollection<Boardgame> Boardgames { get; set; }
         public ObservableCollection<Puzzle> Puzzles { get; set; }
@@ -37,7 +36,7 @@ namespace GameManager.ViewModel
         {
             LoadTrackerSheet();
 
-            WindowTrackerSheetCommand = new DelegateCommand(WindowEditTrackerSheet, CanEditTrackerSheet);
+            WindowTrackerSheetCommand = new DelegateCommand(WindowEditTrackerSheet);
 
         }
 
@@ -52,15 +51,11 @@ namespace GameManager.ViewModel
             using var db = new ManagerContext();
 
             TrackerSheets = new ObservableCollection<TrackerSheet>
-                (db.TrackerSheet
-                .Include(p => p.Puzzles)
-                .Include(b => b.Boardgames)
-                .Include(m => m.Members)
+                (db.TrackerSheets
+                .Include(p => p.Puzzle)
+                .Include(b => b.Boardgame)
+                .Include(m => m.Member)
                 .ToList());
-
-            Boardgames = new ObservableCollection<Boardgame>(db.Boardgames.ToList());
-
-            Puzzles = new ObservableCollection<Puzzle>(db.Puzzles.ToList());
 
         }
 

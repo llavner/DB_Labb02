@@ -106,6 +106,7 @@
                         HorizontalAlignment="Left">
 
                 <RadioButton Content="Exit"
+                             x:Name="exit"
                              Height="50"
                              Foreground="White"
                              FontSize="20"
