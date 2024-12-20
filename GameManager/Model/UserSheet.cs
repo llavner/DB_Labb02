@@ -6,15 +6,18 @@ using System.Threading.Tasks;
 
 namespace GameManager.Model;
 
-    
-        class UserSheet
-        {
-            public int Id { get; set; }
-            public List<Boardgames> Boardgames { get; set; }
-            public List<Puzzles> Puzzles { get; set; }
-            public List<Members> Members { get; set; }
 
-        }
+class UserSheet
+{
+    public int Id { get; set; }
+    public bool InUse { get; set; }
+    public DateOnly CheckOutDate { get; set; }
+    public DateOnly ReturnDate { get; set; }
+    public List<Boardgame> Boardgames { get; set; }
+    public List<Puzzle> Puzzles { get; set; }
+    public List<Member> Members { get; set; }
 
-    
+}
+
+
 

@@ -40,12 +40,6 @@ namespace GameManager.ViewModel
             //EnsureDeleted();
             //EnsureCreated();
 
-
-            //var member = new MembersViewModel();
-            //var userSheet = new UserSheetViewModel();
-            //var boardGame = new BoardgamesViewModel();
-            //var puzzle = new PuzzlesViewModel();
-
             HomeView = new HomeViewModel();
             MemberView = new MembersViewModel();
             UserSheetView = new UserSheetViewModel();
@@ -54,21 +48,49 @@ namespace GameManager.ViewModel
 
             CurrentView = HomeView;
 
-            HomeViewCommand = new DelegateCommand(o => { CurrentView = HomeView; });
+            HomeViewCommand = new DelegateCommand(o => 
+            { 
+                CurrentView = HomeView;
+                ClearSelected();
+            });
 
-            MemberViewCommand = new DelegateCommand(o => { CurrentView = MemberView; });
+            MemberViewCommand = new DelegateCommand(o => 
+            { 
+                CurrentView = MemberView;
+                ClearSelected();
+            });
 
-            PuzzleViewCommand = new DelegateCommand(o => { CurrentView = PuzzleView; });
+            PuzzleViewCommand = new DelegateCommand(o => 
+            { 
+                CurrentView = PuzzleView;
+                ClearSelected();
+            });
 
-            BoardgameViewCommand = new DelegateCommand(o => { CurrentView = BoardgameView; });
+            BoardgameViewCommand = new DelegateCommand(o =>
+            {
+                CurrentView = BoardgameView;
+                ClearSelected();
+            });
 
-            UserSheetViewCommand = new DelegateCommand(o => { CurrentView = UserSheetView; });
+            UserSheetViewCommand = new DelegateCommand(o => 
+            { 
+                CurrentView = UserSheetView;
+                ClearSelected();
+            });
 
 
 
 
         }
 
+        public void ClearSelected()
+        {
+
+            MemberView.SelectedMember = null;
+            BoardgameView.SelectedBoardgame = null;
+            PuzzleView.SelectedPuzzle = null;
+            UserSheetView.SelectedUserSheet = null;
+        }
         public static void EnsureCreated()
         {
             using var db = new ManagerContext();

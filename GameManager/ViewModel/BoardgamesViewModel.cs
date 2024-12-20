@@ -2,24 +2,26 @@
 using GameManager.Assets.Event;
 using GameManager.Model;
 using GameManager.View;
-using GameManager.View.BoardgameWindows;
+using GameManager.View.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace GameManager.ViewModel
 {
     public class BoardgamesViewModel : ObservebleObject
     {
 
-        public ObservableCollection<Boardgames> Boardgames { get; private set; }
+        public ObservableCollection<Boardgame> Boardgames { get; private set; }
 
-        private Boardgames? _selectedBoardgame;
+        private Boardgame? _selectedBoardgame;
 
-        public Boardgames? SelectedBoardgame
+        public Boardgame? SelectedBoardgame
         {
             get => _selectedBoardgame;
 
@@ -27,47 +29,135 @@ namespace GameManager.ViewModel
             {
                 _selectedBoardgame = value;
                 PropertyChangedAlert();
+                WindowEditBoardgameCommand.RaisedCanExecuteChanged();
+                DeleteBoardgameCommand.RaisedCanExecuteChanged();
+
             }
         }
-        public DelegateCommand ShowEditBoardgameCommand { get; set; }
+        public DelegateCommand WindowEditBoardgameCommand { get; set; }
+        public DelegateCommand EditBoardgameCommand { get; set; }
+        public DelegateCommand WindowAddBoardgameCommand { get; set; }
+        public DelegateCommand AddBoardgameCommand { get; set; }
+        public DelegateCommand DeleteBoardgameCommand { get; set; }
+
+        public string Title { get; set; }
+        public string Manufactor { get; set; }
+        public string Players { get; set; }
+        public string Duration { get; set; }
+        public string Difficulty { get; set; }
 
         public BoardgamesViewModel()
         {
 
             LoadBoardgames();
 
-            ShowEditBoardgameCommand = new DelegateCommand(EditBoardgame, CanEditBoardgame);
+            WindowEditBoardgameCommand = new DelegateCommand(WindowEditBoardgame, CanEditBoardgame);
+            EditBoardgameCommand = new DelegateCommand(EditBoardgame);
+
+            WindowAddBoardgameCommand = new DelegateCommand(WindowAddBoardgame);
+            AddBoardgameCommand = new DelegateCommand(AddBoardgame);
+
+            DeleteBoardgameCommand = new DelegateCommand(DeleteBoardgame, CanDeleteBoardgame);
 
 
         }
 
-        private bool CanEditBoardgame(object? arg) => SelectedBoardgame is not null;
-        
-        private void EditBoardgame(object obj)
+        private void WindowEditBoardgame(object obj)
         {
             new BoardgameEdit(this).ShowDialog();
+        }
+
+        private void WindowAddBoardgame(object obj)
+        {
+            new BoardgameAdd(this).ShowDialog();
         }
 
         public void LoadBoardgames()
         {
             using var db = new ManagerContext();
 
-            Boardgames = new ObservableCollection<Boardgames>(db.Boardgames.ToList());
+            Boardgames = new ObservableCollection<Boardgame>(db.Boardgames.ToList());
+        }
 
-            SelectedBoardgame = Boardgames.FirstOrDefault();
+        private bool CanDeleteBoardgame(object? arg) => SelectedBoardgame is not null;
+
+        private void DeleteBoardgame(object obj)
+        {
+
+            var result = MessageBox.Show($"Are you sure to delete {SelectedBoardgame.Title} (Id: {SelectedBoardgame.Id}) ?", "Delete Boardgame?", MessageBoxButton.YesNo);
+
+            if (result == MessageBoxResult.Yes)
+            {
+                using var db = new ManagerContext();
+
+                db.Boardgames.Remove(SelectedBoardgame);
+                db.SaveChanges();
+                SelectedBoardgame = null;
+
+            }
+
+            LoadBoardgames();
 
         }
 
-        public void CreateBoardgame(string title, string manufactor, string players, string duration, string difficulty)
+        private bool CanEditBoardgame(object? arg) => SelectedBoardgame is not null;
+
+        private void EditBoardgame(object obj)
         {
-            var boardGame = new Boardgames() { Title = title, Manufactor = manufactor, Players = players, Duration = duration, Difficulty = difficulty};
+
+            if (SelectedBoardgame != null)
+            {
+                using var db = new ManagerContext();
+
+                var boardgame = db.Boardgames.SingleOrDefault(m => m.Id == SelectedBoardgame.Id);
+
+                boardgame.Title = SelectedBoardgame.Title;
+                boardgame.Manufactor = SelectedBoardgame.Manufactor;
+                boardgame.Players = SelectedBoardgame.Players;
+                boardgame.Duration = SelectedBoardgame.Duration;
+                boardgame.Difficulty = SelectedBoardgame.Difficulty;
+
+                db.SaveChanges();
+
+                LoadBoardgames();
+
+            }
+            else
+            {
+                MessageBox.Show("Attention!", "Please select a row.", MessageBoxButton.OK);
+            }
+
+        }
+
+        private void AddBoardgame(object obj)
+        {
+
+            var boardgame = new Boardgame()
+            {
+                Title = this.Title,
+                Manufactor = this.Manufactor,
+                Players = this.Players,
+                Duration = this.Duration,
+                Difficulty = this.Difficulty
+            };
 
             using var db = new ManagerContext();
 
-            db.Boardgames.Add(boardGame);
+            db.Boardgames.Add(boardgame);
+
             db.SaveChanges();
 
+            LoadBoardgames();
+
+            Title = string.Empty;
+            Manufactor = string.Empty;
+            Players = string.Empty;
+            Duration = string.Empty;
+            Difficulty = string.Empty;
+
+
         }
+
 
     }
 }

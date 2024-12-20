@@ -2,7 +2,7 @@
 using GameManager.Assets.Event;
 using GameManager.Model;
 using GameManager.View;
-using GameManager.View.BoardgameWindows;
+using GameManager.View.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -17,10 +17,10 @@ namespace GameManager.ViewModel
     public class MembersViewModel : ObservebleObject
     {
 
-        public ObservableCollection<Members> Members { get; private set; }
+        public ObservableCollection<Member> Members { get; private set; }
 
-        private Members? _selectedMember;
-        public Members? SelectedMember
+        private Member? _selectedMember;
+        public Member? SelectedMember
         {
             get => _selectedMember;
 
@@ -28,7 +28,8 @@ namespace GameManager.ViewModel
             {
                 _selectedMember = value;
                 PropertyChangedAlert();
-                
+                WindowEditMemberCommand.RaisedCanExecuteChanged();
+                DeleteMemberCommand.RaisedCanExecuteChanged();
             }
         }
 
@@ -37,6 +38,7 @@ namespace GameManager.ViewModel
         public DelegateCommand DeleteMemberCommand { get; set; }
         public DelegateCommand AddMemberCommand { get; set; }
         public DelegateCommand EditMemberCommand { get; set; }
+
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
@@ -46,91 +48,88 @@ namespace GameManager.ViewModel
         public int PostalCode { get; set; }
 
 
-
-
         public MembersViewModel()
         {
 
 
             LoadMembers();
 
-            WindowEditMemberCommand = new DelegateCommand(EditMemberWindow, CanEditMember);
+            WindowEditMemberCommand = new DelegateCommand(WindowEditMember, CanEditMember);
+            EditMemberCommand = new DelegateCommand(EditMember);
 
-            WindowAddMemberCommand = new DelegateCommand(AddMemberWindow, CanAddMember);
+            WindowAddMemberCommand = new DelegateCommand(WindowAddMember);
+            AddMemberCommand = new DelegateCommand(AddMember);
 
             DeleteMemberCommand = new DelegateCommand(DeleteMember, CanDeleteMember);
 
-            AddMemberCommand = new DelegateCommand(AddMember);
 
+
+        }
+
+        private void WindowEditMember(object obj)
+        {
+            new MemberEdit(this).ShowDialog();
+        }
+        private void WindowAddMember(object obj)
+        {
+            new MemberAdd(this).ShowDialog();
+        }
+
+        public void LoadMembers()
+        {
+            using var db = new ManagerContext();
+
+            Members = new ObservableCollection<Member>(db.Members.ToList());
+            PropertyChangedAlert("Members");
         }
 
         private bool CanDeleteMember(object? arg) => SelectedMember is not null;
 
         private void DeleteMember(object obj)
         {
-            using var db = new ManagerContext();
 
-            if (SelectedMember != null)
-            {
-                db.Members.Remove(SelectedMember);
-                db.SaveChanges();
-                SelectedMember = null;
-                //PropertyChangedAlert("SelectedMember");
-            }
-            else
-            {
-                MessageBox.Show("Attention!", "Please select a row.", MessageBoxButton.OK);
+            var result = MessageBox.Show($"Are you sure to delete {SelectedMember.FirstName} {SelectedMember.LastName} (Id: {SelectedMember.Id}) ?", "Delete Member", MessageBoxButton.YesNo);
 
+            if (result == MessageBoxResult.Yes)
+            {
+                using var db = new ManagerContext();
+                if (SelectedMember != null)
+                {
+                    db.Members.Remove(SelectedMember);
+                    db.SaveChanges();
+                    SelectedMember = null;
+                    
+                }
+                else
+                {
+                    MessageBox.Show("Attention!", "Please select a row.", MessageBoxButton.OK);
+
+                }
             }
 
             LoadMembers();
 
         }
 
-        private bool CanAddMember(object? arg) => SelectedMember is not null;
-
-        private void AddMemberWindow(object obj)
-        {
-            new AddMember(this).ShowDialog();
-        }
+        
 
         private bool CanEditMember(object? arg) => SelectedMember is not null;
-
-
-        private void EditMemberWindow(object obj)
-        {
-
-            new MemberEdit(this).ShowDialog();
-        }
-
-
-
-        public void LoadMembers()
-        {
-            using var db = new ManagerContext();
-
-            Members = new ObservableCollection<Members>(db.Members.ToList());
-            PropertyChangedAlert("Members");
-            //SelectedMember = Members.FirstOrDefault();
-        }
-
         public void EditMember(object obj)
         {
 
-            var member = SelectedMember;
-            
-            if(member != null)
+            if (SelectedMember != null)
             {
-
-                SelectedMember.FirstName = this.FirstName;
-                SelectedMember.LastName = this.LastName;
-                SelectedMember.Email = this.Email;
-                SelectedMember.Street = this.Street;
-                SelectedMember.StreetNumber = this.StreetNumber;
-                SelectedMember.City = this.City;
-                SelectedMember.PostalCode = this.PostalCode;
-
                 using var db = new ManagerContext();
+
+                var member = db.Members.SingleOrDefault(m => m.Id == SelectedMember.Id);
+
+                member.FirstName = SelectedMember.FirstName;
+                member.LastName = SelectedMember.LastName;
+                member.Email = SelectedMember.Email;
+                member.Street = SelectedMember.Street;
+                member.StreetNumber = SelectedMember.StreetNumber;
+                member.City = SelectedMember.City;
+                member.PostalCode = SelectedMember.PostalCode;
 
                 db.SaveChanges();
 
@@ -146,7 +145,7 @@ namespace GameManager.ViewModel
 
         public void AddMember(object obj)
         {
-            var member = new Members()
+            var member = new Member()
             {
                 FirstName = this.FirstName,
                 LastName = this.LastName,
@@ -166,13 +165,15 @@ namespace GameManager.ViewModel
             LoadMembers();
 
             FirstName = string.Empty;
-            LastName = string.Empty; 
-            Email = string.Empty; 
+            LastName = string.Empty;
+            Email = string.Empty;
             Street = string.Empty;
             StreetNumber = 0;
             City = string.Empty;
             PostalCode = 0;
 
         }
+
+
     }
 }

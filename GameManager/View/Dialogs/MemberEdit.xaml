@@ -1,13 +1,12 @@
-﻿<Window x:Class="GameManager.View.AddMember"
+﻿<Window x:Class="GameManager.View.Dialogs.MemberEdit"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:GameManager.View"
+        xmlns:local="clr-namespace:GameManager.View.Dialogs"
         xmlns:UI="clr-namespace:GameManager.ViewModel"
-        WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen"
+        WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterOwner" 
         mc:Ignorable="d"
-        d:DataContext="{d:DesignInstance Type=UI:MembersViewModel, IsDesignTimeCreatable=True}"
         Background="Transparent" AllowsTransparency="True">
 
     
@@ -26,12 +25,11 @@
                 BorderBrush="DarkGoldenrod"
                 BorderThickness="1">
 
-                <TextBlock Text="Add Member"
+                <TextBlock Text="Edit Member"
                        VerticalAlignment="Center" 
                        HorizontalAlignment="Center" 
                        Foreground="Gold"
-                       Margin="0,0,0,0"
-                       />
+                       Margin="0,0,0,0"/>
 
             </Border>
 
@@ -57,52 +55,52 @@
                                     Margin="20">
 
 
-
+                            
                             <Label Content="Firstname: "/>
                             <TextBox x:Name="firstName"
-                                    Text="{Binding FirstName}"/>
+                                    Text="{Binding SelectedMember.FirstName}"/>
 
                             <Label Content="Lastname: "/>
                             <TextBox x:Name="lastName"
-                                 Text="{Binding LastName}"/>
+                                    Text="{Binding SelectedMember.LastName}"/>
 
                             <Label Content="Email: "/>
                             <TextBox x:Name="email"
-                                     Text="{Binding Email}"/>
-
+                                     Text="{Binding SelectedMember.Email}"/>
+                            
                             <Label Content="Street: "/>
                             <TextBox x:Name="street"
-                                     Text="{Binding Street}"/>
+                                    Text="{Binding SelectedMember.Street}"/>
 
                             <Label Content="Street No."/>
                             <TextBox x:Name="streetNo"
-                                     Text="{Binding StreetNumber}"/>
+                                 Text="{Binding SelectedMember.StreetNumber}"/>
 
                             <Label Content="City:"/>
                             <TextBox x:Name="city"
-                                     Text="{Binding City}"/>
+                                    Text="{Binding SelectedMember.City}"/>
 
                             <Label Content="Postal Code:"/>
                             <TextBox x:Name="postalCode"
-                                     Text="{Binding PostalCode}"/>
+                                 Text="{Binding SelectedMember.PostalCode}"/>
 
                             <StackPanel Orientation="Horizontal"
-                                        VerticalAlignment="Bottom"
-                                        HorizontalAlignment="Center"
-                                        Margin="10">
+                                    VerticalAlignment="Bottom"
+                                    HorizontalAlignment="Center"
+                                    Margin="10">
 
                                 <Button x:Name="Save"
-                                        Padding="10"
-                                        Margin="0,0,20,0"
-                                        Content="Save"
-                                        Click="Save_Click"
-                                        Command="{Binding AddMemberCommand}"/>
+                                    Padding="10"
+                                    Margin="0,0,20,0"
+                                    Content="Save"
+                                    Click="Save_Click"
+                                    Command="{Binding EditMemberCommand}"/>
                                 
                                 <Button x:Name="Exit"
-                                        Padding="10"
-                                        Content="Back"
-                                        IsCancel="True"/>
-
+                                    Padding="10"
+                                    Content="Back"
+                                    Click="Button_Exit"/>
+                                
                             </StackPanel>
 
                         </StackPanel>
@@ -118,4 +116,3 @@
 
     </Grid>
 </Window>
-

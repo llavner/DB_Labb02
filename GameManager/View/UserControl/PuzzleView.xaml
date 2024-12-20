@@ -54,20 +54,25 @@
 
                                 <DataGrid.Columns>
 
+                                    <DataGridTextColumn Header="Id"
+                                                        Binding="{Binding Id}"/>
+
                                     <DataGridTextColumn Header="Title"
-                                                    Binding="{Binding Title}"/>
-
-                                    <DataGridTextColumn Header="Theme"
-                                                    Binding="{Binding Theme}"/>
-
-                                    <DataGridTextColumn Header="Bits"
-                                                    Binding="{Binding Bits}"/>
-
-                                    <DataGridTextColumn Header="Difficulty"
-                                                    Binding="{Binding Difficulty}"/>
+                                                        Binding="{Binding Title}"/>
 
                                     <DataGridTextColumn Header="Manufactor"
-                                                    Binding="{Binding Manufactor}"/>
+                                                        Binding="{Binding Manufactor}"/>
+
+                                    <DataGridTextColumn Header="Theme"
+                                                        Binding="{Binding Theme}"/>
+
+                                    <DataGridTextColumn Header="Bits"
+                                                        Binding="{Binding Bits}"/>
+
+                                    <DataGridTextColumn Header="Difficulty"
+                                                        Binding="{Binding Difficulty}"/>
+
+                                    
 
                                 </DataGrid.Columns>
 
@@ -81,7 +86,7 @@
                                     Margin="5,5,0,0"
                                     Padding="10"
                                     Content="Edit"
-                                    Command="{Binding ShowEditPuzzleCommand}">
+                                    Command="{Binding WindowEditPuzzleCommand}">
 
                                 </Button>
 
@@ -89,7 +94,7 @@
                                     Margin="5,5,0,0"
                                     Padding="10"
                                     Content="Add"
-                                    Command="{Binding}">
+                                    Command="{Binding WindowAddPuzzleCommand}">
 
                                 </Button>
 
@@ -97,7 +102,7 @@
                                     Margin="5,5,0,0"
                                     Padding="10"
                                     Content="Del"
-                                    Command="{Binding }">
+                                    Command="{Binding DeletePuzzleCommand}">
 
                                 </Button>
 

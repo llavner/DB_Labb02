@@ -52,20 +52,23 @@
 
                                 <DataGrid.Columns>
 
+                                    <DataGridTextColumn Header="Id"
+                                                        Binding="{Binding Id}"/>
+                                    
                                     <DataGridTextColumn Header="Title"
-                                                    Binding="{Binding Title}"/>
+                                                        Binding="{Binding Title}"/>
 
                                     <DataGridTextColumn Header="Manufactor"
-                                                    Binding="{Binding Manufactor}"/>
+                                                        Binding="{Binding Manufactor}"/>
 
                                     <DataGridTextColumn Header="Players"
-                                                    Binding="{Binding Players}"/>
-
-                                    <DataGridTextColumn Header="Difficulty"
-                                                    Binding="{Binding Difficulty}"/>
+                                                        Binding="{Binding Players}"/>
 
                                     <DataGridTextColumn Header="Duration"
-                                                    Binding="{Binding Duration}"/>
+                                                        Binding="{Binding Duration}"/>
+
+                                    <DataGridTextColumn Header="Difficulty"
+                                                        Binding="{Binding Difficulty}"/>
 
                                 </DataGrid.Columns>
 
@@ -79,7 +82,7 @@
                                     Margin="5,5,0,0"
                                     Padding="10"
                                     Content="Edit"
-                                    Command="{Binding ShowEditBoardgameCommand}">
+                                    Command="{Binding WindowEditBoardgameCommand}">
 
                                 </Button>
 
@@ -87,7 +90,7 @@
                                     Margin="5,5,0,0"
                                     Padding="10"
                                     Content="Add"
-                                    Command="{Binding }">
+                                    Command="{Binding WindowAddBoardgameCommand}">
 
                                 </Button>
 
@@ -95,7 +98,7 @@
                                     Margin="5,5,0,0"
                                     Padding="10"
                                     Content="Del"
-                                    Command="{Binding }">
+                                    Command="{Binding DeleteBoardgameCommand}">
 
                                 </Button>
 

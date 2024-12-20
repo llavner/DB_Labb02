@@ -2,6 +2,7 @@
 using GameManager.Assets.Event;
 using GameManager.Model;
 using GameManager.View;
+using GameManager.View.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;

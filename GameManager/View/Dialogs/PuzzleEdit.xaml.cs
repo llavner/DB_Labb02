@@ -13,19 +13,15 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace GameManager.View.BoardgameWindows;
+namespace GameManager.View.Dialogs;
 
-/// <summary>
-/// Interaction logic for BoardgameEdit.xaml
-/// </summary>
-public partial class BoardgameEdit : Window
+public partial class PuzzleEdit : Window
 {
-    public BoardgameEdit(BoardgamesViewModel boardgameViewModel)
+    public PuzzleEdit(PuzzlesViewModel puzzlesViewModel)
     {
         InitializeComponent();
 
-        DataContext = boardgameViewModel;
-
+        DataContext = puzzlesViewModel;
     }
 
     private void MoveWindow(object sender, MouseButtonEventArgs e)
@@ -42,5 +38,9 @@ public partial class BoardgameEdit : Window
         this.Close();
 
     }
-}
 
+    private void Save_Click(object sender, RoutedEventArgs e)
+    {
+        DialogResult = true;
+    }
+}

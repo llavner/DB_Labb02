@@ -7,9 +7,9 @@ namespace GameManager.Model;
 internal class ManagerContext : DbContext
 {
 
-    public DbSet<Members> Members { get; set; }
-    public DbSet<Puzzles> Puzzles { get; set; }
-    public DbSet<Boardgames> Boardgames { get; set; }
+    public DbSet<Member> Members { get; set; }
+    public DbSet<Puzzle> Puzzles { get; set; }
+    public DbSet<Boardgame> Boardgames { get; set; }
     public DbSet<UserSheet> UserSheet { get; set; }
 
 

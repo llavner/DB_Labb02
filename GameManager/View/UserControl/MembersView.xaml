@@ -32,8 +32,7 @@
 
                             <DataGrid x:Name="MemberDataGrid"
                                   Width="500"
-                                  HorizontalAlignment="Center"
-                                  VerticalAlignment="Top"
+                                  HorizontalAlignment="Left"
                                   AlternatingRowBackground="AliceBlue"
                                   AutoGenerateColumns="False"
                                   BorderBrush="#FF5D5D5D"
@@ -48,27 +47,30 @@
                                   CanUserReorderColumns="False"
                                   
                                   ItemsSource="{Binding Members}"
-                                  SelectedItem="{Binding SelectedMember, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                                  SelectedItem="{Binding SelectedMember}">
 
                                 <DataGrid.Columns>
 
+                                    <DataGridTextColumn Header="Id"
+                                                        Binding="{Binding Id}"/>
+                                    
                                     <DataGridTextColumn Header="Firstname"
-                                                Binding="{Binding FirstName}"/>
+                                                        Binding="{Binding FirstName}"/>
 
                                     <DataGridTextColumn Header="Lastname"
-                                                Binding="{Binding LastName}"/>
+                                                        Binding="{Binding LastName}"/>
 
                                     <DataGridTextColumn Header="Street"
-                                                Binding="{Binding Street}"/>
+                                                        Binding="{Binding Street}"/>
 
                                     <DataGridTextColumn Header="No."
-                                                Binding="{Binding StreetNumber}"/>
+                                                        Binding="{Binding StreetNumber}"/>
 
                                     <DataGridTextColumn Header="City"
-                                                Binding="{Binding City}"/>
+                                                        Binding="{Binding City}"/>
 
                                     <DataGridTextColumn Header="Postal Code"
-                                                Binding="{Binding PostalCode}"/>
+                                                        Binding="{Binding PostalCode}"/>
 
                                 </DataGrid.Columns>
 

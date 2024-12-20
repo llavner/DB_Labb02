@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GameManager.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,18 +13,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace GameManager.View.PuzzleWindows;
+namespace GameManager.View.Dialogs;
 
-/// <summary>
-/// Interaction logic for PuzzleAdd.xaml
-/// </summary>
-public partial class PuzzleAdd : Window
+public partial class BoardgameEdit : Window
 {
-    public PuzzleAdd()
+    public BoardgameEdit(BoardgamesViewModel boardgamesViewModel)
     {
         InitializeComponent();
-    }
 
+        DataContext = boardgamesViewModel;
+
+    }
 
     private void MoveWindow(object sender, MouseButtonEventArgs e)
     {
@@ -37,6 +37,13 @@ public partial class PuzzleAdd : Window
     {
 
         this.Close();
+
+    }
+
+    private void Save_Click(object sender, RoutedEventArgs e)
+    {
+
+        DialogResult = true;
 
     }
 }

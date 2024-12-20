@@ -1,26 +1,23 @@
 ﻿using GameManager.Assets.Command;
 using GameManager.Assets.Event;
 using GameManager.Model;
-using GameManager.View;
-using GameManager.View.PuzzleWindows;
-using Microsoft.Windows.Themes;
-using System;
-using System.Collections.Generic;
+using GameManager.View.Dialogs;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows;
+
+
+
 
 namespace GameManager.ViewModel
 {
     public class PuzzlesViewModel : ObservebleObject
     {
 
-        public ObservableCollection<Puzzles> Puzzles { get; private set; }
+        public ObservableCollection<Puzzle> Puzzles { get; private set; }
 
-        private Puzzles? _selectedPuzzle;
+        private Puzzle? _selectedPuzzle;
 
-        public Puzzles? SelectedPuzzle
+        public Puzzle? SelectedPuzzle
         {
             get => _selectedPuzzle;
 
@@ -28,43 +25,130 @@ namespace GameManager.ViewModel
             {
                 _selectedPuzzle = value;
                 PropertyChangedAlert();
+                WindowEditPuzzleCommand.RaisedCanExecuteChanged();
+                DeletePuzzleCommand.RaisedCanExecuteChanged();
             }
         }
 
-        public DelegateCommand ShowEditPuzzleCommand { get; set; }
+        public DelegateCommand WindowEditPuzzleCommand { get; set; }
+        public DelegateCommand EditPuzzleCommand { get; set; }
+        public DelegateCommand WindowAddPuzzleCommand { get; set; }
+        public DelegateCommand AddPuzzleCommand { get; set; }
+        public DelegateCommand DeletePuzzleCommand { get; set; }
+
+        public string Title { get; set; }
+        public string Theme { get; set; }
+        public string Manufactor { get; set; }
+        public int Bits { get; set; }
+        public string Difficulty { get; set; }
+
         public PuzzlesViewModel()
         {
 
             LoadPuzzles();
 
-            ShowEditPuzzleCommand = new DelegateCommand(EditPuzzle, CanEditPuzzle);
+            WindowEditPuzzleCommand = new DelegateCommand(WindowEditPuzzle, CanEditPuzzle);
+            EditPuzzleCommand = new DelegateCommand(EditPuzzle);
+
+            WindowAddPuzzleCommand = new DelegateCommand(WindowAddPuzzle);
+            AddPuzzleCommand = new DelegateCommand(AddPuzzle);
+
+            DeletePuzzleCommand = new DelegateCommand(DeletePuzzle, CanDeletePuzzle);
 
         }
 
-        private bool CanEditPuzzle(object? arg) => SelectedPuzzle is not null;
-        private void EditPuzzle(object obj)
+
+
+        private void WindowEditPuzzle(object obj)
         {
             new PuzzleEdit(this).ShowDialog();
         }
+        private void WindowAddPuzzle(object obj)
+        {
+            new PuzzleAdd(this).ShowDialog();
+        }
+
         public void LoadPuzzles()
         {
             using var db = new ManagerContext();
 
-            Puzzles = new ObservableCollection<Puzzles>(db.Puzzles.ToList());
-
-            SelectedPuzzle = Puzzles.FirstOrDefault();
+            Puzzles = new ObservableCollection<Puzzle>(db.Puzzles.ToList());
 
         }
 
-        public void CreatePuzzle(string title, string theme, string manufactor, int bits, string difficulty)
+        private bool CanDeletePuzzle(object? arg) => SelectedPuzzle is not null;
+
+        private void DeletePuzzle(object obj)
         {
-            var puzzle = new Puzzles() { Title = title, Theme = theme, Manufactor = manufactor, Bits = bits, Difficulty = difficulty };
+
+            var result = MessageBox.Show($"Are you sure to delete {SelectedPuzzle.Title} (Id: {SelectedPuzzle.Id}) ?", "Delete Boardgame?", MessageBoxButton.YesNo);
+
+            if (result == MessageBoxResult.Yes)
+            {
+                using var db = new ManagerContext();
+                
+                db.Puzzles.Remove(SelectedPuzzle);
+                db.SaveChanges();
+                SelectedPuzzle = null;
+
+
+            }
+
+            LoadPuzzles();
+
+        }
+
+        private bool CanEditPuzzle(object? arg) => SelectedPuzzle is not null;
+
+        private void EditPuzzle(object obj)
+        {
+
+            if (SelectedPuzzle != null)
+            {
+                using var db = new ManagerContext();
+
+                var puzzle = db.Puzzles.SingleOrDefault(m => m.Id == SelectedPuzzle.Id);
+
+                puzzle.Title = SelectedPuzzle.Title;
+                puzzle.Manufactor = SelectedPuzzle.Manufactor;
+                puzzle.Theme = SelectedPuzzle.Theme;
+                puzzle.Bits = SelectedPuzzle.Bits;
+                puzzle.Difficulty = SelectedPuzzle.Difficulty;
+
+                db.SaveChanges();
+
+            }
+
+                LoadPuzzles();
+
+        }
+        private void AddPuzzle(object obj)
+        {
+
+            var puzzle = new Puzzle()
+            {
+                Title = this.Title,
+                Manufactor = this.Manufactor,
+                Theme = this.Theme,
+                Bits = this.Bits,
+                Difficulty = this.Difficulty
+            };
 
             using var db = new ManagerContext();
 
             db.Puzzles.Add(puzzle);
+
             db.SaveChanges();
 
+            LoadPuzzles();
+
+            Title = string.Empty;
+            Manufactor = string.Empty;
+            Theme = string.Empty;
+            Bits = 0;
+            Difficulty = string.Empty;
+
         }
+
     }
 }
