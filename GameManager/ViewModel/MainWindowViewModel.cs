@@ -41,11 +41,11 @@ namespace GameManager.ViewModel
             //EnsureCreated();
 
             HomeView = new HomeViewModel();
+            TrackerSheetView = new TrackerSheetViewModel();
             MemberView = new MembersViewModel();
             PuzzleView = new PuzzlesViewModel();
             BoardgameView = new BoardgamesViewModel();
 
-            TrackerSheetView = new TrackerSheetViewModel();
             
             CurrentView = HomeView;
 

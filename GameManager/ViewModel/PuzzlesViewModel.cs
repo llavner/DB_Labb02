@@ -73,7 +73,7 @@ namespace GameManager.ViewModel
             using var db = new ManagerContext();
 
             Puzzles = new ObservableCollection<Puzzle>(db.Puzzles.ToList());
-
+            PropertyChangedAlert(nameof(Puzzles));
         }
 
         private bool CanDeletePuzzle(object? arg) => SelectedPuzzle is not null;

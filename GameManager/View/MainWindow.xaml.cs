@@ -45,6 +45,8 @@ namespace GameManager
 
         private void RadioButton_Exit(object sender, RoutedEventArgs e)
         {
+            exit.IsChecked = false;
+
             var result = MessageBox.Show("Are you sure?", "Exit Program.", MessageBoxButton.YesNo);
 
             if (result == MessageBoxResult.Yes)

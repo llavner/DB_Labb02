@@ -33,7 +33,7 @@
                         <StackPanel Orientation="Horizontal">
 
                             <DataGrid x:Name="BoardgameDataGrid"
-                                      Width="500"
+                                      Width="560"
                                       Height="300"
                                       HorizontalAlignment="Left"
                                       VerticalAlignment="Top"

@@ -77,6 +77,7 @@ namespace GameManager.ViewModel
             using var db = new ManagerContext();
 
             Boardgames = new ObservableCollection<Boardgame>(db.Boardgames.ToList());
+            PropertyChangedAlert(nameof(Boardgames));
         }
 
         private bool CanDeleteBoardgame(object? arg) => SelectedBoardgame is not null;
@@ -88,11 +89,15 @@ namespace GameManager.ViewModel
 
             if (result == MessageBoxResult.Yes)
             {
+
                 using var db = new ManagerContext();
+
+
 
                 db.Boardgames.Remove(SelectedBoardgame);
                 db.SaveChanges();
                 SelectedBoardgame = null;
+
 
             }
 
@@ -121,10 +126,6 @@ namespace GameManager.ViewModel
 
                 LoadBoardgames();
 
-            }
-            else
-            {
-                MessageBox.Show("Attention!", "Please select a row.", MessageBoxButton.OK);
             }
 
         }

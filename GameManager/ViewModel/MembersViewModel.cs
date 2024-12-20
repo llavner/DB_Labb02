@@ -80,7 +80,7 @@ namespace GameManager.ViewModel
             using var db = new ManagerContext();
 
             Members = new ObservableCollection<Member>(db.Members.ToList());
-            PropertyChangedAlert("Members");
+            PropertyChangedAlert(nameof(Members));
         }
 
         private bool CanDeleteMember(object? arg) => SelectedMember is not null;
