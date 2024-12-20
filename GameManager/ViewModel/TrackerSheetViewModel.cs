@@ -33,6 +33,8 @@ namespace GameManager.ViewModel
         public TrackerSheetViewModel()
         {
 
+            
+
             LoadTrackerSheet();
 
             WindowTrackerSheetCommand = new DelegateCommand(WindowEditTrackerSheet, CanEditTrackerSheet);

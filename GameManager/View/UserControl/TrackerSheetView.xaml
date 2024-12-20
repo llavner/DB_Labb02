@@ -6,10 +6,10 @@
              xmlns:local="clr-namespace:GameManager.View.UserControl"
              xmlns:UI="clr-namespace:GameManager.ViewModel"
              mc:Ignorable="d" 
-             
+             d:DataContext="{d:DesignInstance Type=UI:TrackerSheetViewModel, IsDesignTimeCreatable=True}"
              d:DesignHeight="450" d:DesignWidth="800">
 
-    <!--d:DataContext="{d:DesignInstance Type=UI:TrackerSheetViewModel, IsDesignTimeCreatable=True}"-->
+   
     <Grid>
 
         <StackPanel>
@@ -32,12 +32,15 @@
                         <StackPanel Orientation="Horizontal">
 
                             <DataGrid x:Name="TrackerSheetDataGrid"
-                                      Width="500"
+                                      Width="560"
+                                      Height="300"
                                       HorizontalAlignment="Left"
+                                      VerticalAlignment="Top"
                                       AlternatingRowBackground="AliceBlue"
                                       AutoGenerateColumns="False"
                                       BorderBrush="#FF5D5D5D"
                                       BorderThickness="3"
+                                      RowBackground="Beige"
                                       ColumnWidth="*"
                                       SelectionMode="Single"
                                       IsReadOnly="True"
@@ -46,18 +49,26 @@
                                       CanUserResizeRows="False"
                                       CanUserResizeColumns="False"
                                       CanUserReorderColumns="False"
-                                      ItemsSource="{Binding TrackerSheet}">
+                                      ItemsSource="{Binding TrackerSheet}"
+                                      SelectedItem="{Binding SelectedTrackerSheet}">
+                                      
 
                                 <DataGrid.Columns>
-
-                                    <DataGridTextColumn Header="Member"
-                                                        Binding="{Binding Members}"/>
 
                                     <DataGridTextColumn Header="Puzzle"
                                                         Binding="{Binding Puzzles}"/>
 
+                                    <DataGridTextColumn Header="In Use"
+                                                        Width="60"
+                                                        Binding="{Binding  InUse}"/>
+
                                     <DataGridTextColumn Header="Boardgame"
                                                         Binding="{Binding Boardgames}"/>
+
+                                    <DataGridTextColumn Header="In Use"
+                                                        Width="60"
+                                                        Binding="{Binding  InUse}"/>
+                                    
 
 
                                 </DataGrid.Columns>
@@ -66,21 +77,23 @@
 
                             </DataGrid>
 
-                            <StackPanel VerticalAlignment="Bottom">
+                        </StackPanel>
 
-                                <Button x:Name="Edit"
-                                        Margin="5,5,0,0"
-                                        Padding="10"
-                                        Content="Edit"
-                                        Command="{Binding WindowTrackerSheetCommand}">   
+                        <StackPanel VerticalAlignment="Bottom"
+                                    HorizontalAlignment="Center"
+                                    Orientation="Horizontal">
 
-                                </Button>
+                            <Button x:Name="Edit"
+                                    Margin="5,5,0,0"
+                                    Padding="10"
+                                    Content="Edit"
+                                    Command="{Binding WindowTrackerSheetCommand}">
 
-                                
+                            </Button>
 
-                                
 
-                            </StackPanel>
+
+
 
                         </StackPanel>
 
