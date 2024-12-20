@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace GameManager.Model;
 
 
-class UserSheet
+class TrackerSheet
 {
     public int Id { get; set; }
     public bool InUse { get; set; }

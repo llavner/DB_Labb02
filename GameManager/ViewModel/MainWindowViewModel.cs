@@ -25,13 +25,13 @@ namespace GameManager.ViewModel
         public DelegateCommand HomeViewCommand { get; set; }
         public DelegateCommand MemberViewCommand { get; set; }
         public DelegateCommand PuzzleViewCommand { get; set; }
-        public DelegateCommand UserSheetViewCommand { get; set; }
+        public DelegateCommand TrackerSheetViewCommand { get; set; }
         public DelegateCommand BoardgameViewCommand { get; set; }
 
 
         public HomeViewModel HomeView { get; set; }
         public MembersViewModel MemberView { get; set; }
-        public UserSheetViewModel UserSheetView { get; set; }
+        public TrackerSheetViewModel TrackerSheetView { get; set; }
         public PuzzlesViewModel PuzzleView { get; set; }
         public BoardgamesViewModel BoardgameView { get; set; }
 
@@ -42,7 +42,7 @@ namespace GameManager.ViewModel
 
             HomeView = new HomeViewModel();
             MemberView = new MembersViewModel();
-            UserSheetView = new UserSheetViewModel();
+            TrackerSheetView = new TrackerSheetViewModel();
             PuzzleView = new PuzzlesViewModel();
             BoardgameView = new BoardgamesViewModel();
 
@@ -72,9 +72,9 @@ namespace GameManager.ViewModel
                 ClearSelected();
             });
 
-            UserSheetViewCommand = new DelegateCommand(o => 
+            TrackerSheetViewCommand = new DelegateCommand(o => 
             { 
-                CurrentView = UserSheetView;
+                CurrentView = TrackerSheetView;
                 ClearSelected();
             });
 
@@ -89,7 +89,7 @@ namespace GameManager.ViewModel
             MemberView.SelectedMember = null;
             BoardgameView.SelectedBoardgame = null;
             PuzzleView.SelectedPuzzle = null;
-            UserSheetView.SelectedUserSheet = null;
+            TrackerSheetView.SelectedTrackerSheet = null;
         }
         public static void EnsureCreated()
         {

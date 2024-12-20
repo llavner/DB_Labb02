@@ -34,11 +34,14 @@
 
                             <DataGrid x:Name="BoardgameDataGrid"
                                       Width="500"
+                                      Height="300"
                                       HorizontalAlignment="Left"
+                                      VerticalAlignment="Top"
                                       AlternatingRowBackground="AliceBlue"
                                       AutoGenerateColumns="False"
                                       BorderBrush="#FF5D5D5D"
                                       BorderThickness="3"
+                                      RowBackground="Beige"
                                       ColumnWidth="*"
                                       SelectionMode="Single"
                                       IsReadOnly="True"
@@ -53,6 +56,7 @@
                                 <DataGrid.Columns>
 
                                     <DataGridTextColumn Header="Id"
+                                                        Width="50"
                                                         Binding="{Binding Id}"/>
                                     
                                     <DataGridTextColumn Header="Title"
@@ -62,9 +66,11 @@
                                                         Binding="{Binding Manufactor}"/>
 
                                     <DataGridTextColumn Header="Players"
+                                                        Width="50"
                                                         Binding="{Binding Players}"/>
 
                                     <DataGridTextColumn Header="Duration"
+                                                        Width="60"
                                                         Binding="{Binding Duration}"/>
 
                                     <DataGridTextColumn Header="Difficulty"
@@ -76,33 +82,37 @@
 
                             </DataGrid>
 
-                            <StackPanel VerticalAlignment="Bottom">
+                            
 
-                                <Button x:Name="Edit"
-                                    Margin="5,5,0,0"
-                                    Padding="10"
-                                    Content="Edit"
-                                    Command="{Binding WindowEditBoardgameCommand}">
+                        </StackPanel>
 
-                                </Button>
+                        <StackPanel VerticalAlignment="Bottom"
+                                    HorizontalAlignment="Center"
+                                    Orientation="Horizontal">
 
-                                <Button x:Name="Add"
+                            <Button x:Name="Add"
                                     Margin="5,5,0,0"
                                     Padding="10"
                                     Content="Add"
                                     Command="{Binding WindowAddBoardgameCommand}">
 
-                                </Button>
+                            </Button>
 
-                                <Button x:Name="Del"
+                            <Button x:Name="Edit"
                                     Margin="5,5,0,0"
                                     Padding="10"
-                                    Content="Del"
+                                    Content="Edit"
+                                    Command="{Binding WindowEditBoardgameCommand}">
+
+                            </Button>
+
+                            <Button x:Name="Del"
+                                    Margin="50,5,0,0"
+                                    Padding="10"
+                                    Content="Delete"
                                     Command="{Binding DeleteBoardgameCommand}">
 
-                                </Button>
-
-                            </StackPanel>
+                            </Button>
 
                         </StackPanel>
 

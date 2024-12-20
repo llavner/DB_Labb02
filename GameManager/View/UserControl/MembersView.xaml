@@ -31,29 +31,33 @@
                         <StackPanel Orientation="Horizontal">
 
                             <DataGrid x:Name="MemberDataGrid"
-                                  Width="500"
-                                  HorizontalAlignment="Left"
-                                  AlternatingRowBackground="AliceBlue"
-                                  AutoGenerateColumns="False"
-                                  BorderBrush="#FF5D5D5D"
-                                  BorderThickness="3"
-                                  ColumnWidth="*"
-                                  SelectionMode="Single"
-                                  IsReadOnly="True"
-                                  CanUserAddRows="False"
-                                  CanUserDeleteRows="False"
-                                  CanUserResizeRows="False"
-                                  CanUserResizeColumns="False"
-                                  CanUserReorderColumns="False"
+                                      Width="560"
+                                      Height="300"
+                                      ColumnWidth="*"
+                                      HorizontalAlignment="Left"
+                                      VerticalAlignment="Top"
+                                      AlternatingRowBackground="AliceBlue"
+                                      AutoGenerateColumns="False"
+                                      BorderBrush="#FF5D5D5D"
+                                      BorderThickness="3"
+                                      RowBackground="Beige"
+                                      SelectionMode="Single"
+                                      IsReadOnly="True"
+                                      CanUserAddRows="False"
+                                      CanUserDeleteRows="False"
+                                      CanUserResizeRows="False"
+                                      CanUserResizeColumns="False"
+                                      CanUserReorderColumns="False"
                                   
-                                  ItemsSource="{Binding Members}"
-                                  SelectedItem="{Binding SelectedMember}">
+                                      ItemsSource="{Binding Members}"
+                                      SelectedItem="{Binding SelectedMember}">
 
                                 <DataGrid.Columns>
 
                                     <DataGridTextColumn Header="Id"
+                                                        Width="50"
                                                         Binding="{Binding Id}"/>
-                                    
+
                                     <DataGridTextColumn Header="Firstname"
                                                         Binding="{Binding FirstName}"/>
 
@@ -77,34 +81,36 @@
 
 
                             </DataGrid>
+                            
+                        </StackPanel>
 
-                            <StackPanel VerticalAlignment="Bottom">
+                        <StackPanel VerticalAlignment="Bottom"
+                                    HorizontalAlignment="Center"
+                                    Orientation="Horizontal">
 
-                                <Button x:Name="Edit"
-                                    Margin="5,5,0,0"
-                                    Padding="10"
-                                    Content="Edit"
-                                    Command="{Binding WindowEditMemberCommand}">
-
-                                </Button>
-
-                                <Button x:Name="Add"
+                            <Button x:Name="Add"
                                     Margin="5,5,0,0"
                                     Padding="10"
                                     Content="Add"
                                     Command="{Binding WindowAddMemberCommand}">
 
-                                </Button>
+                            </Button>
 
-                                <Button x:Name="Del"
+                            <Button x:Name="Edit"
                                     Margin="5,5,0,0"
                                     Padding="10"
-                                    Content="Del"
+                                    Content="Edit"
+                                    Command="{Binding WindowEditMemberCommand}">
+
+                            </Button>
+
+                            <Button x:Name="Del"
+                                    Margin="50,5,0,0"
+                                    Padding="10"
+                                    Content="Delete"
                                     Command="{Binding DeleteMemberCommand}">
 
-                                </Button>
-
-                            </StackPanel>
+                            </Button>
 
                         </StackPanel>
 
@@ -112,7 +118,10 @@
 
                 </Border>
 
+                
+                
             </StackPanel>
+
 
 
         </StackPanel>

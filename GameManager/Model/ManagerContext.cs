@@ -10,7 +10,7 @@ internal class ManagerContext : DbContext
     public DbSet<Member> Members { get; set; }
     public DbSet<Puzzle> Puzzles { get; set; }
     public DbSet<Boardgame> Boardgames { get; set; }
-    public DbSet<UserSheet> UserSheet { get; set; }
+    public DbSet<TrackerSheet> TrackerSheet { get; set; }
 
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

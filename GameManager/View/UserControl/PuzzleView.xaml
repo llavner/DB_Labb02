@@ -35,26 +35,30 @@
                         <StackPanel Orientation="Horizontal">
 
                             <DataGrid x:Name="MemberDataGrid"
-                                  Width="500"
-                                  HorizontalAlignment="Left"
-                                  AlternatingRowBackground="AliceBlue"
-                                  AutoGenerateColumns="False"
-                                  BorderBrush="#FF5D5D5D"
-                                  BorderThickness="3"
-                                  ColumnWidth="*"
-                                  SelectionMode="Single"
-                                  IsReadOnly="True"
-                                  CanUserAddRows="False"
-                                  CanUserDeleteRows="False"
-                                  CanUserResizeRows="False"
-                                  CanUserResizeColumns="False"
-                                  CanUserReorderColumns="False"
-                                  ItemsSource="{Binding Puzzles}"
-                                  SelectedItem="{Binding SelectedPuzzle}">
+                                      Width="560"
+                                      Height="300"
+                                      HorizontalAlignment="Left"
+                                      VerticalAlignment="Top"
+                                      AlternatingRowBackground="AliceBlue"
+                                      AutoGenerateColumns="False"
+                                      BorderBrush="#FF5D5D5D"
+                                      BorderThickness="3"
+                                      RowBackground="Beige"
+                                      ColumnWidth="*"
+                                      SelectionMode="Single"
+                                      IsReadOnly="True"
+                                      CanUserAddRows="False"
+                                      CanUserDeleteRows="False"
+                                      CanUserResizeRows="False"
+                                      CanUserResizeColumns="False"
+                                      CanUserReorderColumns="False"
+                                      ItemsSource="{Binding Puzzles}"
+                                      SelectedItem="{Binding SelectedPuzzle}">
 
                                 <DataGrid.Columns>
 
                                     <DataGridTextColumn Header="Id"
+                                                        Width="50"
                                                         Binding="{Binding Id}"/>
 
                                     <DataGridTextColumn Header="Title"
@@ -67,12 +71,13 @@
                                                         Binding="{Binding Theme}"/>
 
                                     <DataGridTextColumn Header="Bits"
+                                                        Width="50"
                                                         Binding="{Binding Bits}"/>
 
                                     <DataGridTextColumn Header="Difficulty"
                                                         Binding="{Binding Difficulty}"/>
 
-                                    
+
 
                                 </DataGrid.Columns>
 
@@ -80,33 +85,35 @@
 
                             </DataGrid>
 
-                            <StackPanel VerticalAlignment="Bottom">
+                        </StackPanel>
 
-                                <Button x:Name="Edit"
-                                    Margin="5,5,0,0"
-                                    Padding="10"
-                                    Content="Edit"
-                                    Command="{Binding WindowEditPuzzleCommand}">
+                        <StackPanel VerticalAlignment="Bottom"
+                                    HorizontalAlignment="Center"
+                                    Orientation="Horizontal">
 
-                                </Button>
+                            <Button x:Name="Add"
+                                     Margin="5,5,0,0"
+                                     Padding="10"
+                                     Content="Add"
+                                     Command="{Binding WindowAddPuzzleCommand}">
 
-                                <Button x:Name="Add"
-                                    Margin="5,5,0,0"
-                                    Padding="10"
-                                    Content="Add"
-                                    Command="{Binding WindowAddPuzzleCommand}">
+                            </Button>
 
-                                </Button>
+                            <Button x:Name="Edit"
+                                     Margin="5,5,0,0"
+                                     Padding="10"
+                                     Content="Edit"
+                                     Command="{Binding WindowEditPuzzleCommand}">
 
-                                <Button x:Name="Del"
-                                    Margin="5,5,0,0"
-                                    Padding="10"
-                                    Content="Del"
-                                    Command="{Binding DeletePuzzleCommand}">
+                            </Button>
 
-                                </Button>
+                            <Button x:Name="Del"
+                                     Margin="50,5,0,0"
+                                     Padding="10"
+                                     Content="Delete"
+                                     Command="{Binding DeletePuzzleCommand}">
 
-                            </StackPanel>
+                            </Button>
 
                         </StackPanel>
 

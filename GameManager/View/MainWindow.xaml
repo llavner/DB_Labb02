@@ -69,12 +69,12 @@
                              IsChecked="True"
                              Command="{Binding HomeViewCommand}"/>
 
-                <RadioButton Content="User Sheet"
+                <RadioButton Content="Tracker Sheet"
                              Height="50"
                              Foreground="White"
                              FontSize="20"
                              Style="{StaticResource MenuTheme}"
-                             Command="{Binding UserSheetViewCommand}"/>
+                             Command="{Binding TrackerSheetViewCommand}"/>
 
                 <RadioButton Content="Members"
                              Height="50"

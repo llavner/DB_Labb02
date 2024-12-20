@@ -1,4 +1,4 @@
-﻿<Window x:Class="GameManager.View.Dialogs.UserSheetEdit"
+﻿<Window x:Class="GameManager.View.Dialogs.TrackerSheetEdit"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -23,7 +23,7 @@
                     BorderBrush="DarkGoldenrod"
                     BorderThickness="1">
 
-                <TextBlock Text="Edit User Sheet"
+                <TextBlock Text="Tracker Sheet"
                        VerticalAlignment="Center" 
                        HorizontalAlignment="Center" 
                        Foreground="Gold"
@@ -56,7 +56,7 @@
 
                             <Label Content="Id: "/>
                             <TextBox x:Name="Id"
-                                     Text="{Binding SelectedUserSheet.Id}"/>
+                                     Text="{Binding SelectedTrackerSheet.Id}"/>
 
 
                             <StackPanel Orientation="Horizontal"

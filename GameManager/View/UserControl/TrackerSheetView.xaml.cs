@@ -18,9 +18,9 @@ namespace GameManager.View.UserControl
     /// <summary>
     /// Interaction logic for UseerSheetView.xaml
     /// </summary>
-    public partial class UseerSheetView
+    public partial class TrackerSheetView
     {
-        public UseerSheetView()
+        public TrackerSheetView()
         {
             InitializeComponent();
         }

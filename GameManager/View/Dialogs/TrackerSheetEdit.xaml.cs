@@ -15,9 +15,9 @@ using System.Windows.Shapes;
 namespace GameManager.View.Dialogs;
 
 
-public partial class UserSheetEdit : Window
+public partial class TrackerSheetEdit : Window
 {
-    public UserSheetEdit()
+    public TrackerSheetEdit()
     {
         InitializeComponent();
  
