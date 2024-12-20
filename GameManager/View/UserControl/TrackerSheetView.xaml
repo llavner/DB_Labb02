@@ -32,12 +32,12 @@
                         <StackPanel Orientation="Horizontal">
 
                             <DataGrid x:Name="TrackerSheetDataGrid"
+                                      AutoGenerateColumns="True"
                                       Width="560"
                                       Height="300"
                                       HorizontalAlignment="Left"
                                       VerticalAlignment="Top"
                                       AlternatingRowBackground="AliceBlue"
-                                      AutoGenerateColumns="False"
                                       BorderBrush="#FF5D5D5D"
                                       BorderThickness="3"
                                       RowBackground="Beige"
@@ -53,25 +53,25 @@
                                       SelectedItem="{Binding SelectedTrackerSheet}">
                                       
 
-                                <DataGrid.Columns>
+                                <!--<DataGrid.Columns>
 
                                     <DataGridTextColumn Header="Puzzle"
                                                         Binding="{Binding Puzzles}"/>
 
                                     <DataGridTextColumn Header="In Use"
                                                         Width="60"
-                                                        Binding="{Binding  InUse}"/>
+                                                        Binding="{Binding InUse}"/>
 
                                     <DataGridTextColumn Header="Boardgame"
                                                         Binding="{Binding Boardgames}"/>
 
                                     <DataGridTextColumn Header="In Use"
                                                         Width="60"
-                                                        Binding="{Binding  InUse}"/>
+                                                        Binding="{Binding InUse}"/>
                                     
 
 
-                                </DataGrid.Columns>
+                                </DataGrid.Columns>-->
 
 
 

@@ -10,8 +10,8 @@ public class Member
     public string LastName { get; set; }
     public string Email { get; set; }
     public string Street { get; set; }
-    public int StreetNumber { get; set; }
+    public int? StreetNumber { get; set; }
     public string City { get; set; }
-    public int PostalCode { get; set; }
+    public int? PostalCode { get; set; }
 }
 

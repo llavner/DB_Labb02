@@ -43,9 +43,9 @@ namespace GameManager.ViewModel
         public string LastName { get; set; }
         public string Email { get; set; }
         public string Street { get; set; }
-        public int StreetNumber { get; set; }
+        public int? StreetNumber { get; set; }
         public string City { get; set; }
-        public int PostalCode { get; set; }
+        public int? PostalCode { get; set; }
 
 
         public MembersViewModel()
@@ -168,9 +168,9 @@ namespace GameManager.ViewModel
             LastName = string.Empty;
             Email = string.Empty;
             Street = string.Empty;
-            StreetNumber = 0;
+            StreetNumber = null;
             City = string.Empty;
-            PostalCode = 0;
+            PostalCode = null;
 
         }
 

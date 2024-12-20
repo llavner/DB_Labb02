@@ -42,10 +42,11 @@ namespace GameManager.ViewModel
 
             HomeView = new HomeViewModel();
             MemberView = new MembersViewModel();
-            TrackerSheetView = new TrackerSheetViewModel();
             PuzzleView = new PuzzlesViewModel();
             BoardgameView = new BoardgamesViewModel();
 
+            TrackerSheetView = new TrackerSheetViewModel();
+            
             CurrentView = HomeView;
 
             HomeViewCommand = new DelegateCommand(o => 

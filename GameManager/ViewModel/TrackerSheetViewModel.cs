@@ -3,6 +3,7 @@ using GameManager.Assets.Event;
 using GameManager.Model;
 using GameManager.View;
 using GameManager.View.Dialogs;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -15,7 +16,9 @@ namespace GameManager.ViewModel
     class TrackerSheetViewModel : ObservebleObject
     {
 
-        public ObservableCollection<TrackerSheet> TrackerSheet { get; private set; }
+        public ObservableCollection<TrackerSheet> TrackerSheets { get; private set; }
+        public ObservableCollection<Boardgame> Boardgames { get; set; }
+        public ObservableCollection<Puzzle> Puzzles { get; set; }
 
         private TrackerSheet? _selectedTrackerSheet;
         public TrackerSheet? SelectedTrackerSheet
@@ -32,9 +35,6 @@ namespace GameManager.ViewModel
         public DelegateCommand WindowTrackerSheetCommand { get; set; }
         public TrackerSheetViewModel()
         {
-
-            
-
             LoadTrackerSheet();
 
             WindowTrackerSheetCommand = new DelegateCommand(WindowEditTrackerSheet, CanEditTrackerSheet);
@@ -51,9 +51,16 @@ namespace GameManager.ViewModel
         {
             using var db = new ManagerContext();
 
-            TrackerSheet = new ObservableCollection<TrackerSheet>(db.TrackerSheet.ToList());
+            TrackerSheets = new ObservableCollection<TrackerSheet>
+                (db.TrackerSheet
+                .Include(p => p.Puzzles)
+                .Include(b => b.Boardgames)
+                .Include(m => m.Members)
+                .ToList());
 
-            SelectedTrackerSheet = TrackerSheet.FirstOrDefault();
+            Boardgames = new ObservableCollection<Boardgame>(db.Boardgames.ToList());
+
+            Puzzles = new ObservableCollection<Puzzle>(db.Puzzles.ToList());
 
         }
 
