@@ -10,7 +10,6 @@ public class Puzzle
     public string Manufactor { get; set; }
     public int? Bits { get; set; }
     public string Difficulty { get; set; }
-    
-
+    public List<TrackerSheet> TrackerSheets { get; set; }
 }
 

@@ -53,9 +53,9 @@ namespace GameManager.ViewModel
 
             TrackerSheets = new ObservableCollection<TrackerSheet>
                 (db.TrackerSheet
-                .Include(p => p.Puzzles)
-                .Include(b => b.Boardgames)
-                .Include(m => m.Members)
+                .Include(p => p.Puzzle)
+                .Include(b => b.Boardgame)
+                .Include(m => m.Member)
                 .ToList());
 
             Boardgames = new ObservableCollection<Boardgame>(db.Boardgames.ToList());

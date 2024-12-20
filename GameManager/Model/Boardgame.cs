@@ -10,9 +10,9 @@ public class Boardgame
     public string Players { get; set; }
     public string Duration { get; set; }
     public string Difficulty { get; set; }
-    
-    
-    
+    public List<TrackerSheet> TrackerSheets { get; set; }
+
+
 
 }
 

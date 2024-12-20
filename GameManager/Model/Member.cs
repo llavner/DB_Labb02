@@ -13,5 +13,6 @@ public class Member
     public int? StreetNumber { get; set; }
     public string City { get; set; }
     public int? PostalCode { get; set; }
+    public List<TrackerSheet> TrackerSheets { get; set; }
 }
 
