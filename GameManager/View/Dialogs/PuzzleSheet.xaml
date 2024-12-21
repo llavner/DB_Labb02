@@ -7,7 +7,7 @@
         xmlns:UI="clr-namespace:GameManager.ViewModel"
         WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterOwner"
         mc:Ignorable="d"
-        d:DataContext="{d:DesignInstance Type=UI:MembersViewModel, IsDesignTimeCreatable=True}"
+        d:DataContext="{d:DesignInstance Type=UI:MainWindowViewModel, IsDesignTimeCreatable=True}"
         Background="Transparent" AllowsTransparency="True">
 
     <Grid>
@@ -24,7 +24,7 @@
                     BorderBrush="DarkGoldenrod"
                     BorderThickness="1">
 
-                <TextBlock Text="Puzzle Sheet"
+                <TextBlock Text="Boardgame Sheet"
                            VerticalAlignment="Center" 
                            HorizontalAlignment="Center" 
                            Foreground="Gold"
@@ -50,54 +50,42 @@
                     <Grid Margin="20">
 
                         <StackPanel Orientation="Vertical"
-                                HorizontalAlignment="Center"
-                                Margin="20">
+                                    HorizontalAlignment="Center"
+                                    Margin="20">
 
 
 
                             <StackPanel Orientation="Horizontal">
 
-                                <DataGrid x:Name="PuzzleDataGrid"
-                                      AutoGenerateColumns="False"
-                                      Width="600"
-                                      Height="300"
-                                      HorizontalAlignment="Left"
-                                      VerticalAlignment="Top"
-                                      AlternatingRowBackground="AliceBlue"
-                                      BorderBrush="#FF5D5D5D"
-                                      BorderThickness="3"
-                                      RowBackground="Beige"
-                                      ColumnWidth="*"
-                                      SelectionMode="Single"
-                                      IsReadOnly="True"
-                                      CanUserAddRows="False"
-                                      CanUserDeleteRows="False"
-                                      CanUserResizeRows="False"
-                                      CanUserResizeColumns="False"
-                                      CanUserReorderColumns="False"
-                                      ItemsSource="{Binding TrackerPuzzles}"
-                                      SelectedItem="{Binding SelectedPuzzle}">
+                                <DataGrid x:Name="BoardgameDataGrid"
+                                          AutoGenerateColumns="False"
+                                          Width="250"
+                                          Height="300"
+                                          HorizontalAlignment="Left"
+                                          VerticalAlignment="Top"
+                                          AlternatingRowBackground="AliceBlue"
+                                          BorderBrush="#FF5D5D5D"
+                                          BorderThickness="3"
+                                          RowBackground="Beige"
+                                          ColumnWidth="*"
+                                          SelectionMode="Single"
+                                          IsReadOnly="True"
+                                          CanUserAddRows="False"
+                                          CanUserDeleteRows="False"
+                                          CanUserResizeRows="False"
+                                          CanUserResizeColumns="False"
+                                          CanUserReorderColumns="False"
+                                          ItemsSource="{Binding PuzzleView.Puzzles}"
+                                          SelectedItem="{Binding PuzzleView.SelectedPuzzle}">
 
 
                                     <DataGrid.Columns>
 
+                                        <DataGridTextColumn Header="Puzzle"
+                                                    Binding="{Binding Title}"/>
 
-                                        <DataGridTextColumn Header="Puzzles"
-                                                        Binding="{Binding Title}"/>
-
-                                        <!--<DataGridTextColumn Header="In Use"
-                                                        Binding="{Binding }"/>-->
-
-                                        <!--<DataGridTemplateColumn Header="User"
-                                                            Width="80">
-
-                                        <DataGridTemplateColumn.CellTemplate>
-                                            <DataTemplate>
-                                                <TextBlock Text="{Binding}"/>
-                                            </DataTemplate>
-                                        </DataGridTemplateColumn.CellTemplate>
-
-                                    </DataGridTemplateColumn>-->
+                                        <DataGridTextColumn Header="Member"
+                                                    Binding="{Binding MemberBoardgames}"/>
 
                                     </DataGrid.Columns>
 
@@ -108,27 +96,27 @@
                             </StackPanel>
 
                             <StackPanel VerticalAlignment="Bottom"
-                                        HorizontalAlignment="Center"
-                                        Orientation="Horizontal">
+                                HorizontalAlignment="Center"
+                                Orientation="Horizontal">
 
                             </StackPanel>
 
 
 
                             <StackPanel Orientation="Horizontal"
-                                        VerticalAlignment="Bottom"
-                                        HorizontalAlignment="Center"
-                                        Margin="10">
+                                VerticalAlignment="Bottom"
+                                HorizontalAlignment="Center"
+                                Margin="10">
 
                                 <Button x:Name="Save"
-                                        Padding="10"
-                                        Margin="0,0,20,0"
-                                        Content="Save"/>
+                                Padding="10"
+                                Margin="0,0,20,0"
+                                Content="Save"/>
 
                                 <Button x:Name="Exit"
-                                        Padding="10"
-                                        Content="Back"
-                                        Click="Button_Exit"/>
+                                Padding="10"
+                                Content="Back"
+                                Click="Button_Exit"/>
 
                             </StackPanel>
 

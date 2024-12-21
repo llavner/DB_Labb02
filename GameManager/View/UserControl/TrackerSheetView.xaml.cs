@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GameManager.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,12 +18,15 @@ namespace GameManager.View.UserControl
 {
     /// <summary>
     /// Interaction logic for UseerSheetView.xaml
-    /// </summary>
+    ///// </summary>
     public partial class TrackerSheetView
     {
+
         public TrackerSheetView()
         {
             InitializeComponent();
+
         }
+
     }
 }

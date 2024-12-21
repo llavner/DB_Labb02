@@ -20,9 +20,10 @@ namespace GameManager.View.Dialogs
     {
         public PuzzleSheet()
         {
-
+            
             InitializeComponent();
 
+            
             
         }
 

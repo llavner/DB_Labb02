@@ -58,7 +58,7 @@ namespace GameManager.ViewModel
 
         private void WindowBoardgameSheet(object obj)
         {
-            new BoardgameSheet(this).ShowDialog();
+            new BoardgameSheet().ShowDialog();
         }
     }
 }

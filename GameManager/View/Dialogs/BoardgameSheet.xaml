@@ -7,7 +7,7 @@
         xmlns:UI="clr-namespace:GameManager.ViewModel"
         WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterOwner"
         mc:Ignorable="d"
-        d:DataContext="{d:DesignInstance Type=UI:TrackerSheetViewModel, IsDesignTimeCreatable=True}"
+        d:DataContext="{d:DesignInstance Type=UI:MainWindowViewModel, IsDesignTimeCreatable=True}"
         Background="Transparent" AllowsTransparency="True">
     
     <Grid>
@@ -36,15 +36,15 @@
 
 
                 <Border Width="700"
-            Height="500"
-            BorderThickness="6"
-            BorderBrush="DarkGoldenrod"
-            Background="#FF69945E">
+                        Height="500"
+                        BorderThickness="6"
+                        BorderBrush="DarkGoldenrod"
+                        Background="#FF69945E">
 
                     <Border.Clip>
                         <RectangleGeometry RadiusX="10"
-                               RadiusY="10"
-                               Rect="0,0,700,500"/>
+                                           RadiusY="10"
+                                           Rect="0,0,700,500"/>
                     </Border.Clip>
 
                     <Grid Margin="20">
@@ -75,8 +75,8 @@
                                           CanUserResizeRows="False"
                                           CanUserResizeColumns="False"
                                           CanUserReorderColumns="False"
-                                          ItemsSource="{Binding Boardgames}"
-                                          SelectedItem="{Binding SelectedBoardgame}">
+                                          ItemsSource="{Binding BoardgameView.Boardgames}"
+                                          SelectedItem="{Binding BoardgameView.SelectedBoardgame}">
 
 
                                     <DataGrid.Columns>
@@ -84,7 +84,7 @@
                                         <DataGridTextColumn Header="Boardgame"
                                                             Binding="{Binding Title}"/>
                                         
-                                        <DataGridTextColumn Header="Boardgame"
+                                        <DataGridTextColumn Header="Member"
                                                             Binding="{Binding MemberBoardgames}"/>
 
                                     </DataGrid.Columns>
