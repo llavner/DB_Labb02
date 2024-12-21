@@ -10,10 +10,8 @@ public class Boardgame
     public string? Players { get; set; }
     public string? Duration { get; set; }
     public string? Difficulty { get; set; }
-    //public virtual ICollection<Member> MembersBoardgame { get; set; }
-    public List<TrackerSheet>? TrackerSheets { get; set; }
 
-
+    public ICollection<MemberBoardgame> MemberBoardgames { get; set; }
 
 }
 

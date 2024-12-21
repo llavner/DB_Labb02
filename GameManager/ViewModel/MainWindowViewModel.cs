@@ -8,7 +8,7 @@ using System.Windows;
 
 namespace GameManager.ViewModel
 {
-    internal class MainWindowViewModel : ObservebleObject
+    public class MainWindowViewModel : ObservebleObject
     {
 
         private object? _currentView;
@@ -41,10 +41,10 @@ namespace GameManager.ViewModel
             //EnsureCreated();
 
             HomeView = new HomeViewModel();
-            TrackerSheetView = new TrackerSheetViewModel();
-            MemberView = new MembersViewModel();
-            PuzzleView = new PuzzlesViewModel();
-            BoardgameView = new BoardgamesViewModel();
+            TrackerSheetView = new TrackerSheetViewModel(this);
+            MemberView = new MembersViewModel(this);
+            PuzzleView = new PuzzlesViewModel(this);
+            BoardgameView = new BoardgamesViewModel(this);
 
             
             CurrentView = HomeView;
@@ -90,7 +90,7 @@ namespace GameManager.ViewModel
             MemberView.SelectedMember = null;
             BoardgameView.SelectedBoardgame = null;
             PuzzleView.SelectedPuzzle = null;
-            TrackerSheetView.SelectedTrackerSheet = null;
+            TrackerSheetView.SelectedBoardgame = null;
         }
         public static void EnsureCreated()
         {

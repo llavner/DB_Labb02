@@ -10,7 +10,9 @@ internal class ManagerContext : DbContext
     public DbSet<Member> Members { get; set; }
     public DbSet<Puzzle> Puzzles { get; set; }
     public DbSet<Boardgame> Boardgames { get; set; }
-    public DbSet<TrackerSheet> TrackerSheets { get; set; }
+    public DbSet<MemberPuzzle> MemberPuzzles { get; set; }
+    public DbSet<MemberBoardgame> MemberBoardgames { get; set; }
+
 
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -29,24 +31,41 @@ internal class ManagerContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        
-        modelBuilder.Entity<TrackerSheet>() 
-            .HasOne(ts => ts.Member) 
-            .WithMany(m => m.TrackerSheets) 
-            .HasForeignKey(ts => ts.MemberId); 
 
-        modelBuilder.Entity<TrackerSheet>() 
-            .HasOne(ts => ts.Puzzle) 
-            .WithMany(p => p.TrackerSheets) 
-            .HasForeignKey(ts => ts.PuzzleId);
+        modelBuilder.Entity<MemberPuzzle>()
+            .HasKey(mp => new { mp.MemberId, mp.PuzzleId });
 
-        modelBuilder.Entity<TrackerSheet>() 
-            .HasOne(ts => ts.Boardgame) 
-            .WithMany(bg => bg.TrackerSheets) 
-            .HasForeignKey(ts => ts.BoardgameId);
+        modelBuilder.Entity<MemberPuzzle>()
+            .HasOne(mp => mp.Member)
+            .WithMany(m => m.MemberPuzzles)
+            .HasForeignKey(mp => mp.MemberId);
+
+        modelBuilder.Entity<MemberPuzzle>()
+            .HasOne(mp => mp.Puzzle)
+            .WithMany(p => p.MemberPuzzles)
+            .HasForeignKey(mp => mp.PuzzleId);
+
+        modelBuilder.Entity<MemberBoardgame>()
+            .HasKey(mb => new { mb.MemberId, mb.BoardgameId });
+
+        modelBuilder.Entity<MemberBoardgame>()
+            .HasOne(mb => mb.Member)
+            .WithMany(m => m.MemberBoardgames)
+            .HasForeignKey(mb => mb.MemberId);
+
+        modelBuilder.Entity<MemberBoardgame>()
+            .HasOne(mb => mb.Boardgame)
+            .WithMany(b => b.MemberBoardgames)
+            .HasForeignKey(mb => mb.BoardgameId);
 
     }
 
-
 }
+
+
+
+
+
+
+
 

@@ -11,22 +11,34 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace GameManager.View.UserControl
+namespace GameManager.View.Dialogs
 {
-    /// <summary>
-    /// Interaction logic for UseerSheetView.xaml
-    ///// </summary>
-    public partial class TrackerSheetView
+ 
+    public partial class BoardgameSheet : Window
     {
-
-        public TrackerSheetView()
+        public BoardgameSheet()
         {
             InitializeComponent();
 
+
         }
 
+
+        private void MoveWindow(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ButtonState == MouseButtonState.Pressed)
+            {
+                this.DragMove();
+            }
+        }
+
+        private void Button_Exit(object sender, RoutedEventArgs e)
+        {
+
+            this.Close();
+
+        }
     }
 }

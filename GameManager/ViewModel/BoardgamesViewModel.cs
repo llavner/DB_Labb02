@@ -45,9 +45,12 @@ namespace GameManager.ViewModel
         public string Players { get; set; }
         public string Duration { get; set; }
         public string Difficulty { get; set; }
+        public MainWindowViewModel MainWindowViewModel { get; }
 
-        public BoardgamesViewModel()
+        public BoardgamesViewModel(MainWindowViewModel mainWindowViewModel)
         {
+
+            MainWindowViewModel = mainWindowViewModel;
 
             LoadBoardgames();
 
@@ -58,8 +61,7 @@ namespace GameManager.ViewModel
             AddBoardgameCommand = new DelegateCommand(AddBoardgame);
 
             DeleteBoardgameCommand = new DelegateCommand(DeleteBoardgame, CanDeleteBoardgame);
-
-
+            
         }
 
         private void WindowEditBoardgame(object obj)

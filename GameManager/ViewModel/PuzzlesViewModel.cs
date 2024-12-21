@@ -41,9 +41,12 @@ namespace GameManager.ViewModel
         public string Manufactor { get; set; }
         public int? Bits { get; set; }
         public string Difficulty { get; set; }
+        public MainWindowViewModel MainWindowViewModel { get; }
 
-        public PuzzlesViewModel()
+        public PuzzlesViewModel(MainWindowViewModel mainWindowViewModel)
         {
+
+            MainWindowViewModel = mainWindowViewModel;
 
             LoadPuzzles();
 
@@ -54,7 +57,7 @@ namespace GameManager.ViewModel
             AddPuzzleCommand = new DelegateCommand(AddPuzzle);
 
             DeletePuzzleCommand = new DelegateCommand(DeletePuzzle, CanDeletePuzzle);
-
+            
         }
 
 

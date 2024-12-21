@@ -11,7 +11,7 @@ public class Puzzle
     public int? Bits { get; set; }
     public string? Difficulty { get; set; }
 
-    //public virtual ICollection<Member> PuzzlesMembers { get; set; }
-    public List<TrackerSheet>? TrackerSheets { get; set; }
+    public ICollection<MemberPuzzle> MemberPuzzles { get; set; }
+
 }
 

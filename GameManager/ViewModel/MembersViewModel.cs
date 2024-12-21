@@ -46,11 +46,12 @@ namespace GameManager.ViewModel
         public int? StreetNumber { get; set; }
         public string City { get; set; }
         public int? PostalCode { get; set; }
+        public MainWindowViewModel MainWindowViewModel { get; }
 
-
-        public MembersViewModel()
+        public MembersViewModel(MainWindowViewModel mainWindowViewModel)
         {
 
+            MainWindowViewModel = mainWindowViewModel;
 
             LoadMembers();
 
@@ -61,9 +62,7 @@ namespace GameManager.ViewModel
             AddMemberCommand = new DelegateCommand(AddMember);
 
             DeleteMemberCommand = new DelegateCommand(DeleteMember, CanDeleteMember);
-
-
-
+            
         }
 
         private void WindowEditMember(object obj)

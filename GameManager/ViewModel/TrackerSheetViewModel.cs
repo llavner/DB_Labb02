@@ -3,6 +3,7 @@ using GameManager.Assets.Event;
 using GameManager.Model;
 using GameManager.View;
 using GameManager.View.Dialogs;
+using GameManager.View.UserControl;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -13,51 +14,51 @@ using System.Threading.Tasks;
 
 namespace GameManager.ViewModel
 {
-    class TrackerSheetViewModel : ObservebleObject
+    public class TrackerSheetViewModel : ObservebleObject
     {
-        public ObservableCollection<TrackerSheet> TrackerSheets { get; private set; }
         public ObservableCollection<Boardgame> Boardgames { get; set; }
         public ObservableCollection<Puzzle> Puzzles { get; set; }
+        public ObservableCollection<Member> Members { get; set; }
+        public MainWindowViewModel MainWindowViewModel { get; set; }
 
-        private TrackerSheet? _selectedTrackerSheet;
-        public TrackerSheet? SelectedTrackerSheet
+        private Boardgame? _selectedBoardgame;
+
+        public Boardgame? SelectedBoardgame
         {
-            get => _selectedTrackerSheet;
+            get => _selectedBoardgame;
 
             set
             {
-                _selectedTrackerSheet = value;
+                _selectedBoardgame = value;
                 PropertyChangedAlert();
             }
         }
 
-        public DelegateCommand WindowTrackerSheetCommand { get; set; }
-        public TrackerSheetViewModel()
+        public DelegateCommand WindowPuzzleSheetCommand { get; set; }
+        public DelegateCommand WindowBoardgameSheetCommand { get; set; }
+        public TrackerSheetViewModel(MainWindowViewModel mainWindowViewModel)
         {
-            LoadTrackerSheet();
 
-            WindowTrackerSheetCommand = new DelegateCommand(WindowEditTrackerSheet);
+            MainWindowViewModel = mainWindowViewModel;
+
+
+            WindowPuzzleSheetCommand = new DelegateCommand(WindowPuzzleSheet);
+            WindowBoardgameSheetCommand = new DelegateCommand(WindowBoardgameSheet); 
+
+
 
         }
 
-        private bool CanEditTrackerSheet(object? arg) => SelectedTrackerSheet is not null;
-        private void WindowEditTrackerSheet(object obj)
+        
+
+        private void WindowPuzzleSheet(object obj)
         {
-            new TrackerSheetEdit().ShowDialog();
+            new PuzzleSheet().ShowDialog();
         }
 
-        public void LoadTrackerSheet()
+        private void WindowBoardgameSheet(object obj)
         {
-            using var db = new ManagerContext();
-
-            TrackerSheets = new ObservableCollection<TrackerSheet>
-                (db.TrackerSheets
-                .Include(p => p.Puzzle)
-                .Include(b => b.Boardgame)
-                .Include(m => m.Member)
-                .ToList());
-
+            new BoardgameSheet().ShowDialog();
         }
-
     }
 }
