@@ -75,8 +75,8 @@
                                           CanUserResizeRows="False"
                                           CanUserResizeColumns="False"
                                           CanUserReorderColumns="False"
-                                          ItemsSource="{Binding PuzzleView.Puzzles, NotifyOnSourceUpdated=True}"
-                                          SelectedItem="{Binding PuzzleView.SelectedPuzzle, NotifyOnTargetUpdated=True}">
+                                          ItemsSource="{Binding PuzzleView.Puzzles}"
+                                          SelectedItem="{Binding PuzzleView.SelectedPuzzle}">
 
 
                                     <DataGrid.Columns>
