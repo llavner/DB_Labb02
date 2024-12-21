@@ -29,65 +29,23 @@
 
                     <Grid Margin="20">
 
-                        <StackPanel Orientation="Horizontal">
-
-                            <DataGrid x:Name="TrackerSheetDataGrid"
-                                      AutoGenerateColumns="False"
-                                      Width="560"
-                                      Height="300"
-                                      HorizontalAlignment="Left"
-                                      VerticalAlignment="Top"
-                                      AlternatingRowBackground="AliceBlue"
-                                      BorderBrush="#FF5D5D5D"
-                                      BorderThickness="3"
-                                      RowBackground="Beige"
-                                      ColumnWidth="*"
-                                      SelectionMode="Single"
-                                      IsReadOnly="True"
-                                      CanUserAddRows="False"
-                                      CanUserDeleteRows="False"
-                                      CanUserResizeRows="False"
-                                      CanUserResizeColumns="False"
-                                      CanUserReorderColumns="False"
-                                      ItemsSource="{Binding TrackerSheets}"
-                                      SelectedItem="{Binding SelectedTrackerSheet}">
-                                      
-
-                                    <DataGrid.Columns>
-
-                                    <DataGridTextColumn Header="Puzzle"
-                                                        Binding="{Binding Puzzle.Title}"/>
-
-                                    <DataGridTextColumn Header="In Use"
-                                                        Width="60"
-                                                        Binding="{Binding InUse}"/>
-
-                                    <DataGridTextColumn Header="Boardgame"
-                                                        Binding="{Binding Boardgames}"/>
-
-                                    <DataGridTextColumn Header="In Use"
-                                                        Width="60"
-                                                        Binding="{Binding InUse}"/>
-                                    
-
-
-                                </DataGrid.Columns>
-
-
-
-                            </DataGrid>
-
-                        </StackPanel>
-
                         <StackPanel VerticalAlignment="Bottom"
                                     HorizontalAlignment="Center"
                                     Orientation="Horizontal">
 
-                            <Button x:Name="Edit"
+                            <Button x:Name="puzzlesheet"
                                     Margin="5,5,0,0"
                                     Padding="10"
-                                    Content="Edit"
-                                    Command="{Binding WindowTrackerSheetCommand}">
+                                    Content="Puzzle"
+                                    Command="{Binding WindowPuzzleSheetCommand}">
+
+                            </Button>
+
+                            <Button x:Name="boardgamesheet"
+                                    Margin="5,5,0,0"
+                                    Padding="10"
+                                    Content="Boardgame"
+                                    Command="{Binding WindowBoardgameSheetCommand}">
 
                             </Button>
 

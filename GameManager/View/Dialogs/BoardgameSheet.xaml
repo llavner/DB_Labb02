@@ -7,7 +7,7 @@
         xmlns:UI="clr-namespace:GameManager.ViewModel"
         WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterOwner"
         mc:Ignorable="d"
-        d:DataContext="{d:DesignInstance Type=UI:MembersViewModel, IsDesignTimeCreatable=True}"
+        d:DataContext="{d:DesignInstance Type=UI:TrackerSheetViewModel, IsDesignTimeCreatable=True}"
         Background="Transparent" AllowsTransparency="True">
     
     <Grid>
@@ -75,14 +75,14 @@
                                           CanUserResizeRows="False"
                                           CanUserResizeColumns="False"
                                           CanUserReorderColumns="False"
-                                          ItemsSource="{Binding Members}"
-                                          SelectedItem="{Binding SelectedMember}">
+                                          ItemsSource="{Binding Boardgames}"
+                                          SelectedItem="{Binding SelectedBoardgame}">
 
 
                                     <DataGrid.Columns>
 
                                         <DataGridTextColumn Header="Boardgame"
-                                                            Binding="{Binding FirstName}"/>
+                                                            Binding="{Binding Title}"/>
                                         
                                         <DataGridTextColumn Header="Boardgame"
                                                             Binding="{Binding MemberBoardgames}"/>
