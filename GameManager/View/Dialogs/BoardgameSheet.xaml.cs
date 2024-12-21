@@ -22,7 +22,7 @@ namespace GameManager.View.Dialogs
         {
             InitializeComponent();
 
-
+            
         }
 
 

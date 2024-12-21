@@ -24,7 +24,7 @@
                     BorderBrush="DarkGoldenrod"
                     BorderThickness="1">
 
-                <TextBlock Text="Boardgame Sheet"
+                <TextBlock Text="Puzzle Tracker"
                            VerticalAlignment="Center" 
                            HorizontalAlignment="Center" 
                            Foreground="Gold"
@@ -75,8 +75,8 @@
                                           CanUserResizeRows="False"
                                           CanUserResizeColumns="False"
                                           CanUserReorderColumns="False"
-                                          ItemsSource="{Binding PuzzleView.Puzzles}"
-                                          SelectedItem="{Binding PuzzleView.SelectedPuzzle}">
+                                          ItemsSource="{Binding PuzzleView.Puzzles, NotifyOnSourceUpdated=True}"
+                                          SelectedItem="{Binding PuzzleView.SelectedPuzzle, NotifyOnTargetUpdated=True}">
 
 
                                     <DataGrid.Columns>
@@ -85,7 +85,7 @@
                                                     Binding="{Binding Title}"/>
 
                                         <DataGridTextColumn Header="Member"
-                                                    Binding="{Binding MemberBoardgames}"/>
+                                                    Binding="{Binding MemberPuzzles}"/>
 
                                     </DataGrid.Columns>
 
