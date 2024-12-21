@@ -2,6 +2,7 @@
 using GameManager.Assets.Event;
 using GameManager.Model;
 using GameManager.View.Dialogs;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.ObjectModel;
 using System.Windows;
 
@@ -75,7 +76,7 @@ namespace GameManager.ViewModel
         {
             using var db = new ManagerContext();
 
-            Puzzles = new ObservableCollection<Puzzle>(db.Puzzles.ToList());
+            Puzzles = new ObservableCollection<Puzzle>(db.Puzzles.Include(m => m.MemberPuzzles).ThenInclude(m => m.Member).ToList());
             PropertyChangedAlert(nameof(Puzzles));
         }
 

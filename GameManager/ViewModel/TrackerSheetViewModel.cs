@@ -76,12 +76,12 @@ namespace GameManager.ViewModel
 
         private void WindowPuzzleSheet(object obj)
         {
-            new PuzzleSheet().ShowDialog();
+            new PuzzleSheet(this).ShowDialog();
         }
 
         private void WindowBoardgameSheet(object obj)
         {
-            new BoardgameSheet().ShowDialog();
+            new BoardgameSheet(this).ShowDialog();
         }
     }
 }

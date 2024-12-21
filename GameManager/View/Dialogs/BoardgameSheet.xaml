@@ -10,6 +10,8 @@
         d:DataContext="{d:DesignInstance Type=UI:MainWindowViewModel, IsDesignTimeCreatable=True}"
         Background="Transparent" AllowsTransparency="True">
     
+    
+    
     <Grid>
 
 
@@ -75,8 +77,8 @@
                                           CanUserResizeRows="False"
                                           CanUserResizeColumns="False"
                                           CanUserReorderColumns="False"
-                                          ItemsSource="{Binding BoardgameView.Boardgames}"
-                                          SelectedItem="{Binding BoardgameView.SelectedBoardgame}">
+                                          ItemsSource="{Binding TrackerBoardgames}"
+                                          SelectedItem="{Binding SelectedBoardgame}">
 
 
                                     <DataGrid.Columns>
@@ -84,8 +86,6 @@
                                         <DataGridTextColumn Header="Boardgame"
                                                             Binding="{Binding Title}"/>
                                         
-                                        <DataGridTextColumn Header="Member"
-                                                            Binding="{Binding MemberBoardgames}"/>
 
                                     </DataGrid.Columns>
 

@@ -18,11 +18,11 @@ namespace GameManager.View.Dialogs
  
     public partial class BoardgameSheet : Window
     {
-        public BoardgameSheet()
+        public BoardgameSheet(TrackerSheetViewModel trackerSheetViewModel)
         {
             InitializeComponent();
 
-            
+            DataContext = trackerSheetViewModel;
         }
 
 

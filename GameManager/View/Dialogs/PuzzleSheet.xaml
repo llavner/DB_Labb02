@@ -75,17 +75,22 @@
                                           CanUserResizeRows="False"
                                           CanUserResizeColumns="False"
                                           CanUserReorderColumns="False"
-                                          ItemsSource="{Binding PuzzleView.Puzzles}"
-                                          SelectedItem="{Binding PuzzleView.SelectedPuzzle}">
+                                          ItemsSource="{Binding TrackerPuzzles}"
+                                          SelectedItem="{Binding SelectedPuzzle}">
 
 
                                     <DataGrid.Columns>
 
                                         <DataGridTextColumn Header="Puzzle"
-                                                    Binding="{Binding Title}"/>
+                                                            Binding="{Binding Title}"/>
 
-                                        <DataGridTextColumn Header="Member"
-                                                    Binding="{Binding MemberPuzzles}"/>
+                                        <!--<DataGridTemplateColumn Header="Member">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <ComboBox ItemsSource="{Binding TrackerMembers}" DisplayMemberPath="FirstName" SelectedItem="{Binding Author, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>-->
 
                                     </DataGrid.Columns>
 

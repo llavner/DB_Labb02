@@ -3,6 +3,7 @@ using GameManager.Assets.Event;
 using GameManager.Model;
 using GameManager.View;
 using GameManager.View.Dialogs;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -78,7 +79,7 @@ namespace GameManager.ViewModel
         {
             using var db = new ManagerContext();
 
-            Boardgames = new ObservableCollection<Boardgame>(db.Boardgames.ToList());
+            Boardgames = new ObservableCollection<Boardgame>(db.Boardgames.Include(m => m.MemberBoardgames).ThenInclude(m => m.Member).ToList());
             PropertyChangedAlert(nameof(Boardgames));
         }
 
