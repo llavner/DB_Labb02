@@ -1,5 +1,7 @@
 ﻿
 
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace GameManager.Model;
 
 public class Member
@@ -17,5 +19,11 @@ public class Member
     public ICollection<MemberPuzzle> MemberPuzzles { get; set; }
     public ICollection<MemberBoardgame> MemberBoardgames { get; set; }
 
+    [NotMapped]
+    public string FullName => $"{FirstName} {LastName}";
+    public override string ToString()
+    {
+        return $"{FirstName} {LastName}";
+    }
 }
 

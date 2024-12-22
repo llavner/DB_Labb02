@@ -16,5 +16,11 @@ public class Puzzle
     //public ICollection<Member> PuzzleHolders { get; set; }
     public ICollection<MemberPuzzle> MemberPuzzles { get; set; }
 
+
+    public override string ToString()
+    {
+        return $"{Title}";
+    }
+
 }
 

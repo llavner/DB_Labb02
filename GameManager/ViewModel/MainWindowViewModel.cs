@@ -25,13 +25,11 @@ namespace GameManager.ViewModel
         public DelegateCommand HomeViewCommand { get; set; }
         public DelegateCommand MemberViewCommand { get; set; }
         public DelegateCommand PuzzleViewCommand { get; set; }
-        //public DelegateCommand TrackerSheetViewCommand { get; set; }
         public DelegateCommand BoardgameViewCommand { get; set; }
 
 
         public HomeViewModel HomeView { get; set; }
         public MembersViewModel MemberView { get; set; }
-        //public TrackerSheetViewModel TrackerSheetView { get; set; }
         public PuzzlesViewModel PuzzleView { get; set; }
         public BoardgamesViewModel BoardgameView { get; set; }
 
@@ -41,28 +39,27 @@ namespace GameManager.ViewModel
             //EnsureCreated();
 
             HomeView = new HomeViewModel();
-            //TrackerSheetView = new TrackerSheetViewModel(this);
             MemberView = new MembersViewModel(this);
             PuzzleView = new PuzzlesViewModel(this);
             BoardgameView = new BoardgamesViewModel(this);
 
-            
+
             CurrentView = HomeView;
 
-            HomeViewCommand = new DelegateCommand(o => 
-            { 
+            HomeViewCommand = new DelegateCommand(o =>
+            {
                 CurrentView = HomeView;
                 ClearSelected();
             });
 
-            MemberViewCommand = new DelegateCommand(o => 
-            { 
+            MemberViewCommand = new DelegateCommand(o =>
+            {
                 CurrentView = MemberView;
                 ClearSelected();
             });
 
-            PuzzleViewCommand = new DelegateCommand(o => 
-            { 
+            PuzzleViewCommand = new DelegateCommand(o =>
+            {
                 CurrentView = PuzzleView;
                 ClearSelected();
             });
@@ -73,15 +70,6 @@ namespace GameManager.ViewModel
                 ClearSelected();
             });
 
-            //TrackerSheetViewCommand = new DelegateCommand(o => 
-            //{ 
-            //    CurrentView = TrackerSheetView;
-            //    ClearSelected();
-            //});
-
-
-
-
         }
 
         public void ClearSelected()
@@ -90,7 +78,7 @@ namespace GameManager.ViewModel
             MemberView.SelectedMember = null;
             BoardgameView.SelectedBoardgame = null;
             PuzzleView.SelectedPuzzle = null;
-            //TrackerSheetView.SelectedBoardgame = null;
+
         }
         public static void EnsureCreated()
         {

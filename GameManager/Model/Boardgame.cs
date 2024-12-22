@@ -17,5 +17,11 @@ public class Boardgame
    //public ICollection<Member> BoardgameHolders { get; set; }
     public ICollection<MemberBoardgame> MemberBoardgames { get; set; }
 
+    public override string ToString()
+    {
+        return $"{Title}";
+    }
+
+
 }
 

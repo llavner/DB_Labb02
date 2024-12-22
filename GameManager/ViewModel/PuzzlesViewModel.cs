@@ -14,10 +14,22 @@ namespace GameManager.ViewModel
     public class PuzzlesViewModel : ObservebleObject
     {
 
+        public Member? SelectedMember 
+        { 
+            get => MainWindowViewModel.MemberView.SelectedMember;
+            set
+            {
+                MainWindowViewModel.MemberView.SelectedMember = value;
+                FullName = SelectedMember.FullName;
+                PropertyChangedAlert(nameof(FullName));
+                PropertyChangedAlert();
+            }
+        }
+
+        public ObservableCollection<Member> Members => MainWindowViewModel.MemberView.Members;
         public ObservableCollection<Puzzle> Puzzles { get; private set; }
 
         private Puzzle? _selectedPuzzle;
-
         public Puzzle? SelectedPuzzle
         {
             get => _selectedPuzzle;
@@ -38,6 +50,7 @@ namespace GameManager.ViewModel
         public DelegateCommand AddPuzzleCommand { get; set; }
         public DelegateCommand DeletePuzzleCommand { get; set; }
 
+        public string FullName { get; set; }
         public string Title { get; set; }
         public string Theme { get; set; }
         public string Manufactor { get; set; }
@@ -62,6 +75,7 @@ namespace GameManager.ViewModel
 
             WindowPuzzleSheetCommand = new DelegateCommand(WindowPuzzleSheet);
 
+            
         }
 
 

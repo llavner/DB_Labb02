@@ -18,6 +18,18 @@ namespace GameManager.ViewModel
     public class BoardgamesViewModel : ObservebleObject
     {
 
+        public Member? SelectedMember
+        {
+            get => MainWindowViewModel.MemberView.SelectedMember;
+            set
+            {
+                MainWindowViewModel.MemberView.SelectedMember = value;
+                FullName = SelectedMember.FullName;
+                PropertyChangedAlert(nameof(FullName));
+                PropertyChangedAlert();
+            }
+        }
+        public ObservableCollection<Member> Members => MainWindowViewModel.MemberView.Members;
         public ObservableCollection<Boardgame> Boardgames { get; private set; }
 
         private Boardgame? _selectedBoardgame;
@@ -42,6 +54,7 @@ namespace GameManager.ViewModel
         public DelegateCommand DeleteBoardgameCommand { get; set; }
         public DelegateCommand WindowBoardgameSheetCommand { get; set; }
 
+        public string FullName { get; set; }
         public string Title { get; set; }
         public string Manufactor { get; set; }
         public string Players { get; set; }

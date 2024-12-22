@@ -53,10 +53,6 @@ namespace GameManager.ViewModel
 
             MainWindowViewModel = mainWindowViewModel;
 
-
-            //WindowPuzzleSheetCommand = new DelegateCommand(WindowPuzzleSheet);
-            //WindowBoardgameSheetCommand = new DelegateCommand(WindowBoardgameSheet);
-
             LoadTrackerData();
 
         }
@@ -74,14 +70,5 @@ namespace GameManager.ViewModel
             PropertyChangedAlert(nameof(TrackerMembers));
         }
 
-        //private void WindowPuzzleSheet(object obj)
-        //{
-        //    new PuzzleSheet(this).ShowDialog();
-        //}
-
-        //private void WindowBoardgameSheet(object obj)
-        //{
-        //    new BoardgameSheet(this).ShowDialog();
-        //}
     }
 }

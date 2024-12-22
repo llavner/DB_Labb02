@@ -59,39 +59,49 @@
 
                             <StackPanel Orientation="Horizontal">
 
-                                <DataGrid x:Name="BoardgameDataGrid"
-                                          AutoGenerateColumns="False"
-                                          Width="250"
-                                          Height="300"
-                                          HorizontalAlignment="Left"
-                                          VerticalAlignment="Top"
-                                          AlternatingRowBackground="AliceBlue"
-                                          BorderBrush="#FF5D5D5D"
-                                          BorderThickness="3"
-                                          RowBackground="Beige"
-                                          ColumnWidth="*"
-                                          SelectionMode="Single"
-                                          IsReadOnly="True"
-                                          CanUserAddRows="False"
-                                          CanUserDeleteRows="False"
-                                          CanUserResizeRows="False"
-                                          CanUserResizeColumns="False"
-                                          CanUserReorderColumns="False"
-                                          ItemsSource="{Binding Boardgames}"
-                                          SelectedItem="{Binding SelectedBoardgame}">
+                                <Border BorderBrush="Black" BorderThickness="1"
+                                        CornerRadius="2" Margin="2">
+
+                                    <ListBox Height="auto"
+                                             Padding="2"
+                                             Width="160"
+                                             ItemsSource="{Binding Boardgames}"
+                                             SelectedItem="{Binding SelectedBoardgame}">
+
+                                    </ListBox>
+                                </Border>
+
+                                <StackPanel VerticalAlignment="Center"
+                                            HorizontalAlignment="Center"
+                                            Width="150" 
+                                            Height="300"
+                                            Margin="10">
+
+                                    <Label Content="Boardgame:" FontWeight="Bold"/>
+                                    
+                                    <TextBox Padding="2"
+                                             Text="{Binding SelectedBoardgame.Title}"/>
+
+                                    <Label Content="Member:" FontWeight="Bold"/>
+                                    <TextBox Padding="2"
+                                             Text="{Binding FullName, UpdateSourceTrigger=PropertyChanged}"/>
 
 
-                                    <DataGrid.Columns>
-
-                                        <DataGridTextColumn Header="Boardgame"
-                                                            Binding="{Binding Title}"/>
-                                        
-
-                                    </DataGrid.Columns>
+                                </StackPanel>
 
 
+                                <Border BorderBrush="Black" BorderThickness="1"
+                                        CornerRadius="2" Margin="2">
 
-                                </DataGrid>
+                                    <ListBox Height="auto"
+                                             Padding="2"
+                                             Width="160"
+                                             ItemsSource="{Binding Members}"
+                                             SelectedItem="{Binding SelectedMember}">
+
+                                    </ListBox>
+                                </Border>
+
 
                             </StackPanel>
 

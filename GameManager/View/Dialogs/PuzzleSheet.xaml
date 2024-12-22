@@ -57,75 +57,79 @@
 
                             <StackPanel Orientation="Horizontal">
 
-                                <DataGrid x:Name="BoardgameDataGrid"
-                                          AutoGenerateColumns="False"
-                                          Width="250"
-                                          Height="300"
-                                          HorizontalAlignment="Left"
-                                          VerticalAlignment="Top"
-                                          AlternatingRowBackground="AliceBlue"
-                                          BorderBrush="#FF5D5D5D"
-                                          BorderThickness="3"
-                                          RowBackground="Beige"
-                                          ColumnWidth="*"
-                                          SelectionMode="Single"
-                                          IsReadOnly="True"
-                                          CanUserAddRows="False"
-                                          CanUserDeleteRows="False"
-                                          CanUserResizeRows="False"
-                                          CanUserResizeColumns="False"
-                                          CanUserReorderColumns="False"
-                                          ItemsSource="{Binding Puzzles}"
-                                          SelectedItem="{Binding SelectedPuzzle}">
+                                <Border BorderBrush="Black" BorderThickness="1"
+                                        CornerRadius="2" Margin="2">
+
+                                    <ListBox Height="auto"
+                                             Padding="2"
+                                             Width="160"
+                                             ItemsSource="{Binding Puzzles}"
+                                             SelectedItem="{Binding SelectedPuzzle}">
+
+                                    </ListBox>
+                                </Border>
+
+                                <StackPanel VerticalAlignment="Center"
+                                            HorizontalAlignment="Center"
+                                            Width="150" 
+                                            Height="300"
+                                            Margin="10">
+
+                                    <Label Content="Puzzle:" FontWeight="Bold"/>
+
+                                    <TextBox Padding="2"
+                                             Text="{Binding SelectedPuzzle.Title}"/>
+
+                                    <Label Content="Member:" FontWeight="Bold"/>
+                                    <TextBox Padding="2"
+                                             Text="{Binding FullName, UpdateSourceTrigger=PropertyChanged}"/>
 
 
-                                    <DataGrid.Columns>
-
-                                        <DataGridTextColumn Header="Puzzle"
-                                                            Binding="{Binding Title}"/>
-
-                                        <!--<DataGridTemplateColumn Header="Member">
-                                            <DataGridTemplateColumn.CellTemplate>
-                                                <DataTemplate>
-                                                    <ComboBox ItemsSource="{Binding TrackerMembers}" DisplayMemberPath="FirstName" SelectedItem="{Binding Author, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-                                                </DataTemplate>
-                                            </DataGridTemplateColumn.CellTemplate>
-                                        </DataGridTemplateColumn>-->
-
-                                    </DataGrid.Columns>
+                                </StackPanel>
 
 
+                                <Border BorderBrush="Black" BorderThickness="1"
+                                        CornerRadius="2" Margin="2">
 
-                                </DataGrid>
+                                    <ListBox Height="auto"
+                                             Padding="2"
+                                             Width="160"
+                                             ItemsSource="{Binding Members}"
+                                             SelectedItem="{Binding SelectedMember}">
+
+                                    </ListBox>
+                                </Border>
+
 
                             </StackPanel>
 
                             <StackPanel VerticalAlignment="Bottom"
-                                HorizontalAlignment="Center"
-                                Orientation="Horizontal">
+                                        HorizontalAlignment="Center"
+                                        Orientation="Horizontal">
 
                             </StackPanel>
 
 
 
                             <StackPanel Orientation="Horizontal"
-                                VerticalAlignment="Bottom"
-                                HorizontalAlignment="Center"
-                                Margin="10">
+                                        VerticalAlignment="Bottom"
+                                        HorizontalAlignment="Center"
+                                        Margin="10">
 
                                 <Button x:Name="Save"
-                                Padding="10"
-                                Margin="0,0,20,0"
-                                Content="Save"/>
+                                        Padding="10"
+                                        Margin="0,0,20,0"
+                                        Content="Save"/>
 
                                 <Button x:Name="Exit"
-                                Padding="10"
-                                Content="Back"
-                                Click="Button_Exit"/>
+                                        Padding="10"
+                                        Content="Back"
+                                        Click="Button_Exit"/>
 
                             </StackPanel>
 
                         </StackPanel>
+
 
                     </Grid>
 

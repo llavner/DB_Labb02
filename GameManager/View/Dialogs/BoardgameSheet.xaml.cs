@@ -1,4 +1,5 @@
-﻿using GameManager.ViewModel;
+﻿using GameManager.View.UserControl;
+using GameManager.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,9 @@ namespace GameManager.View.Dialogs
             InitializeComponent();
 
             DataContext = boardgamesViewModel;
+
+
+
         }
 
 
@@ -40,5 +44,7 @@ namespace GameManager.View.Dialogs
             this.Close();
 
         }
+
+        
     }
 }
