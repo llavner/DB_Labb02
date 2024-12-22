@@ -18,12 +18,12 @@ namespace GameManager.View.Dialogs
 
     public partial class PuzzleSheet : Window
     {
-        public PuzzleSheet()
+        public PuzzleSheet(PuzzlesViewModel puzzlesViewModel)
         {
             
             InitializeComponent();
 
-            
+            DataContext = puzzlesViewModel;
             
         }
 

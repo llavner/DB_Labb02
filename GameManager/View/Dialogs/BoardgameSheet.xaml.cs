@@ -1,4 +1,5 @@
-﻿using GameManager.ViewModel;
+﻿using GameManager.View.UserControl;
+using GameManager.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,9 +19,12 @@ namespace GameManager.View.Dialogs
  
     public partial class BoardgameSheet : Window
     {
-        public BoardgameSheet()
+        public BoardgameSheet(BoardgamesViewModel boardgamesViewModel)
         {
             InitializeComponent();
+
+            DataContext = boardgamesViewModel;
+
 
 
         }
@@ -40,5 +44,7 @@ namespace GameManager.View.Dialogs
             this.Close();
 
         }
+
+        
     }
 }

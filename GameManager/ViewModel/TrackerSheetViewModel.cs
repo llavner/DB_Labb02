@@ -16,9 +16,9 @@ namespace GameManager.ViewModel
 {
     public class TrackerSheetViewModel : ObservebleObject
     {
-        public ObservableCollection<Boardgame> Boardgames { get; set; }
-        public ObservableCollection<Puzzle> Puzzles { get; set; }
-        public ObservableCollection<Member> Members { get; set; }
+        public ObservableCollection<Boardgame> TrackerBoardgames { get; set; }
+        public ObservableCollection<Puzzle> TrackerPuzzles { get; set; }
+        public ObservableCollection<Member> TrackerMembers { get; set; }
         public MainWindowViewModel MainWindowViewModel { get; set; }
 
         private Boardgame? _selectedBoardgame;
@@ -33,6 +33,18 @@ namespace GameManager.ViewModel
                 PropertyChangedAlert();
             }
         }
+        private Puzzle? _selectedPuzzle;
+        public Puzzle? SelectedPuzzle
+        {
+            get => _selectedPuzzle;
+
+            set
+            {
+                _selectedPuzzle = value;
+                PropertyChangedAlert();
+                
+            }
+        }
 
         public DelegateCommand WindowPuzzleSheetCommand { get; set; }
         public DelegateCommand WindowBoardgameSheetCommand { get; set; }
@@ -41,24 +53,22 @@ namespace GameManager.ViewModel
 
             MainWindowViewModel = mainWindowViewModel;
 
-
-            WindowPuzzleSheetCommand = new DelegateCommand(WindowPuzzleSheet);
-            WindowBoardgameSheetCommand = new DelegateCommand(WindowBoardgameSheet); 
-
-
+            LoadTrackerData();
 
         }
 
-        
-
-        private void WindowPuzzleSheet(object obj)
+        private void LoadTrackerData()
         {
-            new PuzzleSheet().ShowDialog();
+            using var db = new ManagerContext();
+
+            TrackerPuzzles = new ObservableCollection<Puzzle>(db.Puzzles.ToList());
+            TrackerBoardgames = new ObservableCollection<Boardgame>(db.Boardgames.ToList());
+            TrackerMembers = new ObservableCollection<Member>(db.Members.ToList());
+
+            PropertyChangedAlert(nameof(TrackerPuzzles));
+            PropertyChangedAlert(nameof(TrackerBoardgames));
+            PropertyChangedAlert(nameof(TrackerMembers));
         }
 
-        private void WindowBoardgameSheet(object obj)
-        {
-            new BoardgameSheet().ShowDialog();
-        }
     }
 }

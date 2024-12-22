@@ -39,6 +39,7 @@ namespace GameManager.ViewModel
         public DelegateCommand AddMemberCommand { get; set; }
         public DelegateCommand EditMemberCommand { get; set; }
 
+        
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }

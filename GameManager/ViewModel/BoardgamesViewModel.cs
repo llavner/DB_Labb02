@@ -3,6 +3,7 @@ using GameManager.Assets.Event;
 using GameManager.Model;
 using GameManager.View;
 using GameManager.View.Dialogs;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -17,6 +18,18 @@ namespace GameManager.ViewModel
     public class BoardgamesViewModel : ObservebleObject
     {
 
+        public Member? SelectedMember
+        {
+            get => MainWindowViewModel.MemberView.SelectedMember;
+            set
+            {
+                MainWindowViewModel.MemberView.SelectedMember = value;
+                FullName = SelectedMember.FullName;
+                PropertyChangedAlert(nameof(FullName));
+                PropertyChangedAlert();
+            }
+        }
+        public ObservableCollection<Member> Members => MainWindowViewModel.MemberView.Members;
         public ObservableCollection<Boardgame> Boardgames { get; private set; }
 
         private Boardgame? _selectedBoardgame;
@@ -39,7 +52,9 @@ namespace GameManager.ViewModel
         public DelegateCommand WindowAddBoardgameCommand { get; set; }
         public DelegateCommand AddBoardgameCommand { get; set; }
         public DelegateCommand DeleteBoardgameCommand { get; set; }
+        public DelegateCommand WindowBoardgameSheetCommand { get; set; }
 
+        public string FullName { get; set; }
         public string Title { get; set; }
         public string Manufactor { get; set; }
         public string Players { get; set; }
@@ -61,9 +76,15 @@ namespace GameManager.ViewModel
             AddBoardgameCommand = new DelegateCommand(AddBoardgame);
 
             DeleteBoardgameCommand = new DelegateCommand(DeleteBoardgame, CanDeleteBoardgame);
-            
+
+            WindowBoardgameSheetCommand = new DelegateCommand(WindowBoardgameSheet);
+
         }
 
+        private void WindowBoardgameSheet(object obj)
+        {
+            new BoardgameSheet(this).ShowDialog();
+        }
         private void WindowEditBoardgame(object obj)
         {
             new BoardgameEdit(this).ShowDialog();
@@ -78,7 +99,7 @@ namespace GameManager.ViewModel
         {
             using var db = new ManagerContext();
 
-            Boardgames = new ObservableCollection<Boardgame>(db.Boardgames.ToList());
+            Boardgames = new ObservableCollection<Boardgame>(db.Boardgames.Include(m => m.MemberBoardgames).ThenInclude(m => m.Member).ToList());
             PropertyChangedAlert(nameof(Boardgames));
         }
 

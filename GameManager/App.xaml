@@ -28,10 +28,6 @@
                 <view:BoardgameView/>
             </DataTemplate>
 
-            <DataTemplate DataType="{x:Type viewModel:TrackerSheetViewModel}">
-                <view:TrackerSheetView/>
-            </DataTemplate>
-
         </ResourceDictionary>
         
     </Application.Resources>

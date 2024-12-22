@@ -2,6 +2,7 @@
 using GameManager.Assets.Event;
 using GameManager.Model;
 using GameManager.View.Dialogs;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.ObjectModel;
 using System.Windows;
 
@@ -13,10 +14,22 @@ namespace GameManager.ViewModel
     public class PuzzlesViewModel : ObservebleObject
     {
 
+        public Member? SelectedMember 
+        { 
+            get => MainWindowViewModel.MemberView.SelectedMember;
+            set
+            {
+                MainWindowViewModel.MemberView.SelectedMember = value;
+                FullName = SelectedMember.FullName;
+                PropertyChangedAlert(nameof(FullName));
+                PropertyChangedAlert();
+            }
+        }
+
+        public ObservableCollection<Member> Members => MainWindowViewModel.MemberView.Members;
         public ObservableCollection<Puzzle> Puzzles { get; private set; }
 
         private Puzzle? _selectedPuzzle;
-
         public Puzzle? SelectedPuzzle
         {
             get => _selectedPuzzle;
@@ -30,12 +43,14 @@ namespace GameManager.ViewModel
             }
         }
 
+        public DelegateCommand WindowPuzzleSheetCommand { get; set; }
         public DelegateCommand WindowEditPuzzleCommand { get; set; }
         public DelegateCommand EditPuzzleCommand { get; set; }
         public DelegateCommand WindowAddPuzzleCommand { get; set; }
         public DelegateCommand AddPuzzleCommand { get; set; }
         public DelegateCommand DeletePuzzleCommand { get; set; }
 
+        public string FullName { get; set; }
         public string Title { get; set; }
         public string Theme { get; set; }
         public string Manufactor { get; set; }
@@ -57,11 +72,17 @@ namespace GameManager.ViewModel
             AddPuzzleCommand = new DelegateCommand(AddPuzzle);
 
             DeletePuzzleCommand = new DelegateCommand(DeletePuzzle, CanDeletePuzzle);
+
+            WindowPuzzleSheetCommand = new DelegateCommand(WindowPuzzleSheet);
+
             
         }
 
 
-
+        private void WindowPuzzleSheet(object obj)
+        {
+            new PuzzleSheet(this).ShowDialog();
+        }
         private void WindowEditPuzzle(object obj)
         {
             new PuzzleEdit(this).ShowDialog();
@@ -75,7 +96,7 @@ namespace GameManager.ViewModel
         {
             using var db = new ManagerContext();
 
-            Puzzles = new ObservableCollection<Puzzle>(db.Puzzles.ToList());
+            Puzzles = new ObservableCollection<Puzzle>(db.Puzzles.Include(m => m.MemberPuzzles).ThenInclude(m => m.Member).ToList());
             PropertyChangedAlert(nameof(Puzzles));
         }
 
