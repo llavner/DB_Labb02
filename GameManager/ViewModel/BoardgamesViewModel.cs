@@ -40,6 +40,7 @@ namespace GameManager.ViewModel
         public DelegateCommand WindowAddBoardgameCommand { get; set; }
         public DelegateCommand AddBoardgameCommand { get; set; }
         public DelegateCommand DeleteBoardgameCommand { get; set; }
+        public DelegateCommand WindowBoardgameSheetCommand { get; set; }
 
         public string Title { get; set; }
         public string Manufactor { get; set; }
@@ -62,9 +63,15 @@ namespace GameManager.ViewModel
             AddBoardgameCommand = new DelegateCommand(AddBoardgame);
 
             DeleteBoardgameCommand = new DelegateCommand(DeleteBoardgame, CanDeleteBoardgame);
-            
+
+            WindowBoardgameSheetCommand = new DelegateCommand(WindowBoardgameSheet);
+
         }
 
+        private void WindowBoardgameSheet(object obj)
+        {
+            new BoardgameSheet(this).ShowDialog();
+        }
         private void WindowEditBoardgame(object obj)
         {
             new BoardgameEdit(this).ShowDialog();

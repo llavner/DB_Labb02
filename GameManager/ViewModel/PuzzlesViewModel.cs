@@ -31,6 +31,7 @@ namespace GameManager.ViewModel
             }
         }
 
+        public DelegateCommand WindowPuzzleSheetCommand { get; set; }
         public DelegateCommand WindowEditPuzzleCommand { get; set; }
         public DelegateCommand EditPuzzleCommand { get; set; }
         public DelegateCommand WindowAddPuzzleCommand { get; set; }
@@ -58,11 +59,16 @@ namespace GameManager.ViewModel
             AddPuzzleCommand = new DelegateCommand(AddPuzzle);
 
             DeletePuzzleCommand = new DelegateCommand(DeletePuzzle, CanDeletePuzzle);
-            
+
+            WindowPuzzleSheetCommand = new DelegateCommand(WindowPuzzleSheet);
+
         }
 
 
-
+        private void WindowPuzzleSheet(object obj)
+        {
+            new PuzzleSheet(this).ShowDialog();
+        }
         private void WindowEditPuzzle(object obj)
         {
             new PuzzleEdit(this).ShowDialog();

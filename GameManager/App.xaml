@@ -28,9 +28,9 @@
                 <view:BoardgameView/>
             </DataTemplate>
 
-            <DataTemplate DataType="{x:Type viewModel:TrackerSheetViewModel}">
+            <!--<DataTemplate DataType="{x:Type viewModel:TrackerSheetViewModel}">
                 <view:TrackerSheetView/>
-            </DataTemplate>
+            </DataTemplate>-->
 
         </ResourceDictionary>
         

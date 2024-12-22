@@ -75,7 +75,7 @@
                                           CanUserResizeRows="False"
                                           CanUserResizeColumns="False"
                                           CanUserReorderColumns="False"
-                                          ItemsSource="{Binding TrackerPuzzles}"
+                                          ItemsSource="{Binding Puzzles}"
                                           SelectedItem="{Binding SelectedPuzzle}">
 
 

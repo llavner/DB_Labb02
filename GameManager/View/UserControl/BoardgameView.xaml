@@ -106,6 +106,14 @@
 
                             </Button>
 
+                            <Button x:Name="puzzletracker"
+                                    Margin="50,5,0,0"
+                                    Padding="10"
+                                    Content="Tracker"
+                                    Command="{Binding WindowBoardgameSheetCommand}">
+
+                            </Button>
+
                             <Button x:Name="Del"
                                     Margin="50,5,0,0"
                                     Padding="10"

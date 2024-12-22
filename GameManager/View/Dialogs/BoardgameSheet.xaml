@@ -77,7 +77,7 @@
                                           CanUserResizeRows="False"
                                           CanUserResizeColumns="False"
                                           CanUserReorderColumns="False"
-                                          ItemsSource="{Binding TrackerBoardgames}"
+                                          ItemsSource="{Binding Boardgames}"
                                           SelectedItem="{Binding SelectedBoardgame}">
 
 
