@@ -1,6 +1,4 @@
-## Databas Labb02
-
-### Game Manager Application
+## Game Manager Application : Databas Labb02
 
 Detta är en applikation för att hantera en fiktiv spelklubb. Klubben kan använda applikationen för att hålla koll på medlemmar, pussel och spel. Applikationen använder en relationsdatabas (SQL), och en backupfil av databasen inkluderas i repot under namnet GameManager.bak.
 
